@@ -9,7 +9,7 @@ public class InputMovement : MonoBehaviour {
     /// <summary>
     /// Moves the gameObject to the position of the mouse/touch position
     /// </summary>
-	void Update () {
+	void FixedUpdate () {
         float tNewPos = 0;
         if (Input.touchCount > 0) {
             tNewPos = Input.GetTouch(0).position.x;

@@ -21,7 +21,7 @@ public class Scrolling : MonoBehaviour {
         moveHand = true;
     }
 
-    private void Update() {
+    private void FixedUpdate() {
         if (_goingDown) {
             transform.Translate(Vector2.down * _speed / 20);
         }
