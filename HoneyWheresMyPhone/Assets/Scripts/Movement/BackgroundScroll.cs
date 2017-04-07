@@ -13,10 +13,16 @@ public class BackgroundScroll : MonoBehaviour {
         _currentOffset = _renderer.sharedMaterial.GetTextureOffset("_MainTex");
     }
 
+    /// <summary>
+    /// reverses the scrolling
+    /// </summary>
     public void ReverseScrolling() {
         _scrollUp = true;
     }
 
+    /// <summary>
+    /// Moves the background offset
+    /// </summary>
     private void FixedUpdate() {
         if (_scrollUp) {
             _currentOffset.y += Mathf.Repeat(Time.fixedDeltaTime * _scrollSpeed * 0.495f, 1);

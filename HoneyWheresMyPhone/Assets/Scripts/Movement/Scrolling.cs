@@ -16,11 +16,17 @@ public class Scrolling : MonoBehaviour {
         _desiredHandYPosition = _hand.transform.position.y - _desiredHandMovement;
     }
 
+    /// <summary>
+    /// reverses the movement
+    /// </summary>
     public void ReverseMovement() {
         _goingDown = true;
         moveHand = true;
     }
 
+    /// <summary>
+    /// Moves the objects and moves the hand if the way you're going changed recently
+    /// </summary>
     private void FixedUpdate() {
         if (_goingDown) {
             transform.Translate(Vector2.down * _speed / 20);
