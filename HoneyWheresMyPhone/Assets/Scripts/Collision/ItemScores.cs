@@ -19,7 +19,7 @@ public class ItemScores : MonoBehaviour {
     /// Returns if the object is an end object
     /// </summary>
     /// <returns></returns>
-    public bool AquiredEndObject() {
+    public bool EndObject() {
         return _endObject;
     }
 }
