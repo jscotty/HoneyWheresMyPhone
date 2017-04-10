@@ -1,6 +1,4 @@
-﻿//@author Nick van Dokkum
-
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,7 +7,7 @@ public class HookCollision : MonoBehaviour
 
     [SerializeField] private string _itemTag;
     [SerializeField] private Vector2 _desiredItemPosition;
-    private List<ItemScores> _itemScores = new List<ItemScores>();
+    private List<ItemBase> _itemScores = new List<ItemBase>();
     [SerializeField] private Scrolling _scrolling;
     [SerializeField] private BackgroundScroll _backgroundScroll;
     private bool _goingUp = false;
@@ -31,9 +29,9 @@ public class HookCollision : MonoBehaviour
             collision.gameObject.GetComponent<Collider2D>().enabled = false;
             collision.gameObject.transform.SetParent(transform);
             collision.gameObject.transform.localPosition = _desiredItemPosition;
-            _itemScores.Add(collision.gameObject.GetComponent<ItemScores>());
-            //TODO ScoreManager.T.score += collision.gameObject.GetComponent<ItemScores>().Score();
-            ItemScores tItemScores = collision.gameObject.GetComponent<ItemScores>();
+            _itemScores.Add(collision.gameObject.GetComponent<ItemBase>());
+            //ScoreManager.T.score += collision.gameObject.GetComponent<ItemScores>().Score();
+            ItemBase tItemScores = collision.gameObject.GetComponent<ItemBase>();
             if (tItemScores.EndObject())
             {
                 //ScoreManager.T.endobject = true;

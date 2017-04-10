@@ -4,11 +4,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemScores : MonoBehaviour
+public class ItemBase : MonoBehaviour
 {
 
-    [SerializeField] private int _score;
-    [SerializeField] private bool _endObject;
+    [SerializeField]
+    private int _score;
+    [SerializeField]
+    private bool _endObject;
+    public int itemIndexForSpawning;
 
     /// <summary>
     /// Returns the score of the item
