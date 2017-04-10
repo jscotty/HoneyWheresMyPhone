@@ -2,14 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemBase : MonoBehaviour
+public class ItemScores : MonoBehaviour
 {
 
-    [SerializeField]
-    private int _score;
-    [SerializeField]
-    private bool _endObject;
-    public int itemIndexForSpawning;
+    [SerializeField] private int _score;
+    [SerializeField] private bool _endObject;
 
     /// <summary>
     /// Returns the score of the item

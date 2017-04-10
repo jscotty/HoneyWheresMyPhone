@@ -28,7 +28,8 @@ public class SoundController : Singleton<SoundController>
     public void PlaySound(AudioClip iSound, bool iRepeating, Transform iParentForSound = null, string iStringForDestroy = "")
     {
         AudioSource tAudioSource = Instantiate(_soundObject).GetComponent<AudioSource>();
-        if(iParentForSound != null) {
+        if (iParentForSound != null)
+        {
             tAudioSource.transform.SetParent(iParentForSound);
         }
         tAudioSource.loop = iRepeating;
