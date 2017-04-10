@@ -20,21 +20,19 @@ public class HookCollision : MonoBehaviour
     {
         if (collision.gameObject.CompareTag(_itemTag))
         {
-            if (!_goingUp)
+            if (GameData.Instance.direction != Direction.UP)
             {
-                _scrolling.ReverseMovement();
-                _backgroundScroll.ReverseScrolling();
-                _goingUp = true;
+                GameData.Instance.direction = Direction.UP;
             }
             collision.gameObject.GetComponent<Collider2D>().enabled = false;
             collision.gameObject.transform.SetParent(transform);
             collision.gameObject.transform.localPosition = _desiredItemPosition;
             _itemScores.Add(collision.gameObject.GetComponent<ItemBase>());
-            //ScoreManager.T.score += collision.gameObject.GetComponent<ItemScores>().Score();
+            //TODO add score
             ItemBase tItemScores = collision.gameObject.GetComponent<ItemBase>();
             if (tItemScores.EndObject())
             {
-                //ScoreManager.T.endobject = true;
+                //TODO set if end object
             }
         }
     }

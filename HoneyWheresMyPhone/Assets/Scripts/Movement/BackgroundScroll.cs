@@ -10,19 +10,13 @@ public class BackgroundScroll : MonoBehaviour
     [SerializeField] private float _scrollSpeed;
     private Vector2 _currentOffset;
     [SerializeField] private Renderer _renderer;
-    private bool _scrollUp = false;
 
+    /// <summary>
+    /// Sets the start Offset for the background texture
+    /// </summary>
     private void Start()
     {
         _currentOffset = _renderer.sharedMaterial.GetTextureOffset("_MainTex");
-    }
-
-    /// <summary>
-    /// reverses the scrolling
-    /// </summary>
-    public void ReverseScrolling()
-    {
-        _scrollUp = true;
     }
 
     /// <summary>
@@ -30,7 +24,7 @@ public class BackgroundScroll : MonoBehaviour
     /// </summary>
     private void FixedUpdate()
     {
-        if (_scrollUp)
+        if (GameData.Instance.direction == Direction.UP)
         {
             _currentOffset.y += Mathf.Repeat(Time.fixedDeltaTime * _scrollSpeed * 0.495f, 1); //The 0.495f is to make it scroll at the same speed as the items
         }
