@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemScores : MonoBehaviour {
+public class ItemScores : MonoBehaviour
+{
 
     [SerializeField] private int _score;
     [SerializeField] private bool _endObject;
@@ -11,7 +12,8 @@ public class ItemScores : MonoBehaviour {
     /// Returns the score of the item
     /// </summary>
     /// <returns></returns>
-    public int Score() {
+    public int Score()
+    {
         return _score;
     }
 
@@ -19,7 +21,8 @@ public class ItemScores : MonoBehaviour {
     /// Returns if the object is an end object
     /// </summary>
     /// <returns></returns>
-    public bool EndObject() {
+    public bool EndObject()
+    {
         return _endObject;
     }
 }
