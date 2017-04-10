@@ -5,17 +5,19 @@ using UnityEngine;
 public class Scrolling : MonoBehaviour
 {
 
-    private bool _goingDown = false;
+    private bool _goingUp = false;
     [SerializeField] private float _speed;
     [SerializeField] private Transform _hand;
     private bool moveHand = false;
     [SerializeField] private float _desiredHandMovement;
+    private Vector2 _startPosition;
 
     private float _desiredHandYPosition;
 
     private void Start()
     {
         _desiredHandYPosition = _hand.transform.position.y - _desiredHandMovement;
+        _startPosition = (Vector2)transform.position;
     }
 
     /// <summary>
@@ -23,7 +25,7 @@ public class Scrolling : MonoBehaviour
     /// </summary>
     public void ReverseMovement()
     {
-        _goingDown = true;
+        _goingUp = true;
         moveHand = true;
     }
 
@@ -32,9 +34,13 @@ public class Scrolling : MonoBehaviour
     /// </summary>
     private void FixedUpdate()
     {
-        if (_goingDown)
+        if (_goingUp)
         {
             transform.Translate(Vector2.down * _speed / 20);
+            if(transform.position.y >= _startPosition.y)
+            {
+                Debug.Log("We're back at the top");
+            }
         }
         else
         {
