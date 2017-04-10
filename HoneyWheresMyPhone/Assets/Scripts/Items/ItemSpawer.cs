@@ -2,46 +2,61 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemSpawer : MonoBehaviour
+public class ItemSpawer : Singleton<ItemSpawer>
 {
-    [SerializeField]private float _topSpawnY;
-    [SerializeField]private float _botSpawnY;
-    private Camera _camera;
+    [SerializeField]
+    private float _topSpawnY;
+    [SerializeField]
+    private float _botSpawnY;
     public List<GameObject> itemList;
-    [SerializeField]private Transform _itemParent;
-    // Use this for initialization
-    void Start()
-    {
-        _camera = Camera.main;
-    }
+    [SerializeField]
+    private Transform _itemParent;
+    [SerializeField]
+    private Transform _leftBound;
+    [SerializeField]
+    private Transform _rightBound;
 
+#if UNITY_EDITOR //as long as the update is just for debugging leave this here
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            CreateItem(Direction.DOWN);
+            CreateRandomItemAtRandomPosition(Direction.DOWN);
         }
     }
+#endif
 
-    public void CreateItem(Direction iDirection)
+    /// <summary>
+    /// This function creates one random item from the itemlist at a random position.
+    /// </summary>
+    /// <param name="iDirection"></param>
+    public void CreateRandomItemAtRandomPosition(Direction iDirection)
     {
+        Vector3 tSpawnPos = Vector3.Lerp(_leftBound.transform.position,_rightBound.transform.position,Random.Range(0f,1f));
+        int tRandomItemindex = Random.Range(0, itemList.Count);
+        tSpawnPos.z = 0;
         switch (iDirection)
         {
             case Direction.UP:
-                Instantiate(itemList[Random.Range(0, itemList.Count)], new Vector3(Random.Range(0, Screen.width), _topSpawnY), Quaternion.identity, _itemParent);
+                tSpawnPos.y = _topSpawnY;
                 break;
             case Direction.DOWN:
-                Vector3 tSpawnPos = _camera.ScreenToWorldPoint(new Vector3(Random.Range(0, Screen.width), 0));
                 tSpawnPos.y = _botSpawnY;
-                tSpawnPos.z = 0;
-                Instantiate(itemList[Random.Range(0, itemList.Count)],tSpawnPos ,Quaternion.identity,_itemParent);
                 break;
         }
+        Instantiate(itemList[tRandomItemindex], tSpawnPos, Quaternion.identity, _itemParent);
+    }
+
+    public void CreateItemAtFixedPosition(Direction iDirection, Vector3 iPosition, GameObject iItem)
+    {
+        Instantiate(iItem, iPosition, Quaternion.identity, _itemParent);
+    }
+
+
+    public void CreateItemAtFixedLocalPosition(Direction iDirection, Vector3 iLocalPosition, GameObject iItem)
+    {
+        GameObject tItem = Instantiate(iItem, new Vector3(0,_topSpawnY,0), Quaternion.identity, _itemParent);
+        tItem.transform.localPosition = iLocalPosition;
     }
 }
 
-public enum Direction
-{
-    UP,
-    DOWN
-}
