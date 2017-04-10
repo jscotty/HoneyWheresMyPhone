@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class GameData : Singleton<GameData>
 {
-
-    Direction direction;
+    public Direction direction;
 }
 
 public enum Direction
