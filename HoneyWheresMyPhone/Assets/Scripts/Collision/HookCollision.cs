@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿//@author Nick van Dokkum
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -30,7 +32,7 @@ public class HookCollision : MonoBehaviour
             collision.gameObject.transform.SetParent(transform);
             collision.gameObject.transform.localPosition = _desiredItemPosition;
             _itemScores.Add(collision.gameObject.GetComponent<ItemScores>());
-            //ScoreManager.T.score += collision.gameObject.GetComponent<ItemScores>().Score();
+            //TODO ScoreManager.T.score += collision.gameObject.GetComponent<ItemScores>().Score();
             ItemScores tItemScores = collision.gameObject.GetComponent<ItemScores>();
             if (tItemScores.EndObject())
             {

@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿//@author Nick van Dokkum
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -30,7 +32,7 @@ public class BackgroundScroll : MonoBehaviour
     {
         if (_scrollUp)
         {
-            _currentOffset.y += Mathf.Repeat(Time.fixedDeltaTime * _scrollSpeed * 0.495f, 1);
+            _currentOffset.y += Mathf.Repeat(Time.fixedDeltaTime * _scrollSpeed * 0.495f, 1); //The 0.495f is to make it scroll at the same speed as the items
         }
         else
         {
