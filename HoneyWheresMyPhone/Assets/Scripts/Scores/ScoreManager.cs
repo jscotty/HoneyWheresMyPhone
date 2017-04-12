@@ -29,6 +29,7 @@ public class ScoreManager : Singleton<ScoreManager> {
         if(depthCurrentRound > MeterHighscore) {
             PlayerPrefs.SetFloat("HighScore", depthCurrentRound);
         }
+        UpdateHighScore();
         ScoreTotal += scoreCurrentRound;
         scoreCurrentRound = 0;
     }
