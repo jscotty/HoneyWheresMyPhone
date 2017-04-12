@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ScoreManager : Singleton<ScoreManager> {
 
-	public int ScoreTotal { get; private set; }
+	//public int ScoreTotal { get; private set; }
     public float MeterHighscore { get; private set; }
     public int scoreCurrentRound = 0;
     public float depthCurrentRound = 0;
