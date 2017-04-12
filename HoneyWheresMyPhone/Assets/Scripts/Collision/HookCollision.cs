@@ -7,10 +7,9 @@ public class HookCollision : MonoBehaviour
 
     [SerializeField] private string _itemTag;
     [SerializeField] private Vector2 _desiredItemPosition;
-    private List<ItemBase> _itemScores = new List<ItemBase>();
+    //private List<ItemBase> _itemScores = new List<ItemBase>();
     [SerializeField] private Scrolling _scrolling;
     [SerializeField] private BackgroundScroll _backgroundScroll;
-    private bool _goingUp = false;
 
     /// <summary>
     /// Triggers when an object is touched, if it is an item it will grab it and start moving up if it isn't already
@@ -27,12 +26,12 @@ public class HookCollision : MonoBehaviour
             collision.gameObject.GetComponent<Collider2D>().enabled = false;
             collision.gameObject.transform.SetParent(transform);
             collision.gameObject.transform.localPosition = _desiredItemPosition;
-            _itemScores.Add(collision.gameObject.GetComponent<ItemBase>());
-            //TODO add score
+            //_itemScores.Add(collision.gameObject.GetComponent<ItemBase>());
             ItemBase tItemScores = collision.gameObject.GetComponent<ItemBase>();
+            ScoreManager.Instance.scoreCurrentRound += tItemScores.Score();
             if (tItemScores.EndObject())
             {
-                //TODO set if end object
+                ScoreManager.Instance.gainedEndObject = true;
             }
         }
     }

@@ -13,10 +13,14 @@ public class Scrolling : MonoBehaviour
     [SerializeField] private float _desiredHandMovement;
     private Vector2 _startPosition;
 
+    [SerializeField] private GameObject _endScreen;
+    private bool setDepth = false;
+
     private float _desiredHandYPosition;
 
     private void Start()
     {
+        GameData.Instance.direction = Direction.DOWN;
         _desiredHandYPosition = _hand.transform.position.y - _desiredHandMovement;
         _startPosition = (Vector2)transform.position;
     }
@@ -28,10 +32,16 @@ public class Scrolling : MonoBehaviour
     {
         if (GameData.Instance.direction == Direction.UP)
         {
-            transform.Translate(Vector2.down * _speed / 20);
-            if(transform.position.y >= _startPosition.y)
+            if (!setDepth)
             {
-                Debug.Log("We're back at the top");
+                ScoreManager.Instance.depthCurrentRound = transform.position.y;
+                setDepth = true;
+            }
+            transform.Translate(Vector2.down * _speed / 20);
+            if(transform.position.y <= _startPosition.y)
+            {
+                GameData.Instance.direction = Direction.NONE;
+                _endScreen.SetActive(true);
             }
             if (moveHand)
             {
@@ -43,7 +53,7 @@ public class Scrolling : MonoBehaviour
                 }
             }
         }
-        else
+        else if(GameData.Instance.direction == Direction.DOWN)
         {
             transform.Translate(Vector2.up * _speed / 20);
         }

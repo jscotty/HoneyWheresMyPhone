@@ -28,7 +28,7 @@ public class BackgroundScroll : MonoBehaviour
         {
             _currentOffset.y += Mathf.Repeat(Time.fixedDeltaTime * _scrollSpeed * 0.495f, 1); //The 0.495f is to make it scroll at the same speed as the items
         }
-        else
+        else if (GameData.Instance.direction == Direction.DOWN)
         {
             _currentOffset.y -= Mathf.Repeat(Time.fixedDeltaTime * _scrollSpeed * 0.495f, 1);
         }

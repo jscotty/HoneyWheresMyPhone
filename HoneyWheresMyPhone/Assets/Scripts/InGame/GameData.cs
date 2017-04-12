@@ -10,5 +10,6 @@ public class GameData : Singleton<GameData>
 public enum Direction
 {
     UP,
-    DOWN
+    DOWN,
+    NONE
 }
