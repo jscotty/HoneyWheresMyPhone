@@ -30,7 +30,7 @@ public class ScoreManager : Singleton<ScoreManager> {
             PlayerPrefs.SetFloat("HighScore", depthCurrentRound);
         }
         UpdateHighScore();
-        ScoreTotal += scoreCurrentRound;
+        //ScoreTotal += scoreCurrentRound;
         scoreCurrentRound = 0;
     }
 }
