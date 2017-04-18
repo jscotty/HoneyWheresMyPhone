@@ -5,9 +5,11 @@ using UnityEngine;
 public class ProgressBar : MonoBehaviour {
 
 	public Transform endItem { private get; set; }
-    public Transform startItem { private get; set; }
-    [SerializeField] private Transform _endItem;
-    [SerializeField] private Transform _startItem;
+    public Transform startItem { private get; set; 
+        /* this is for debugging
+    //[SerializeField] private Transform _endItem;
+    //[SerializeField] private Transform _startItem;
+    */
 
     private bool backToStart = false;
 
@@ -20,8 +22,10 @@ public class ProgressBar : MonoBehaviour {
 
     private void Start()
     {
-        endItem = _endItem;
-        startItem = _startItem;
+        /* this is for debugging
+        //endItem = _endItem;
+        //startItem = _startItem;
+        */
         _targetStartPos = (Vector2)endItem.position;
         _startPos = -_uiObjectDesiredLocation;
     }
