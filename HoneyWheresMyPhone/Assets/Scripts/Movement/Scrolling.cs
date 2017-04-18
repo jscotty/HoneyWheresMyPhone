@@ -1,45 +1,61 @@
-﻿using System.Collections;
+﻿//@author Nick van Dokkum
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Scrolling : MonoBehaviour {
-
-    private bool _goingDown = false;
+public class Scrolling : MonoBehaviour
+{
+    
     [SerializeField] private float _speed;
     [SerializeField] private Transform _hand;
-    private bool moveHand = false;
+    private bool moveHand = true;
     [SerializeField] private float _desiredHandMovement;
+    private Vector2 _startPosition;
+
+    [SerializeField] private GameObject _endScreen;
+    private bool setDepth = false;
 
     private float _desiredHandYPosition;
 
-    private void Start() {
+    private void Start()
+    {
+        GameData.Instance.direction = Direction.DOWN;
         _desiredHandYPosition = _hand.transform.position.y - _desiredHandMovement;
-    }
-
-    /// <summary>
-    /// reverses the movement
-    /// </summary>
-    public void ReverseMovement() {
-        _goingDown = true;
-        moveHand = true;
+        _startPosition = (Vector2)transform.position;
     }
 
     /// <summary>
     /// Moves the objects and moves the hand if the way you're going changed recently
     /// </summary>
-    private void FixedUpdate() {
-        if (_goingDown) {
-            transform.Translate(Vector2.down * _speed / 20);
-        }
-        else {
-            transform.Translate(Vector2.up * _speed / 20);
-        }
-        if (moveHand) {
-            _hand.Translate(Vector2.down * _speed / 50);
-            if (_hand.position.y <= _desiredHandYPosition) {
-                _hand.position = new Vector2(0, _desiredHandYPosition);
-                moveHand = false;
+    private void FixedUpdate()
+    {
+        if (GameData.Instance.direction == Direction.UP)
+        {
+            if (!setDepth)
+            {
+                ScoreManager.Instance.depthCurrentRound = transform.position.y;
+                setDepth = true;
             }
+            transform.Translate(Vector2.down * _speed / 20);
+            if(transform.position.y <= _startPosition.y)
+            {
+                GameData.Instance.direction = Direction.NONE;
+                _endScreen.SetActive(true);
+            }
+            if (moveHand)
+            {
+                _hand.Translate(Vector2.down * _speed / 50);
+                if (_hand.position.y <= _desiredHandYPosition)
+                {
+                    _hand.position = new Vector2(0, _desiredHandYPosition);
+                    moveHand = false;
+                }
+            }
+        }
+        else if(GameData.Instance.direction == Direction.DOWN)
+        {
+            transform.Translate(Vector2.up * _speed / 20);
         }
     }
 }
