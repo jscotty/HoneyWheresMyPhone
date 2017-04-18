@@ -5,7 +5,7 @@ using UnityEngine;
 public class ProgressBar : MonoBehaviour {
 
 	public Transform endItem { private get; set; }
-    public Transform startItem { private get; set; 
+    public Transform startItem { private get; set; }
         /* this is for debugging
     //[SerializeField] private Transform _endItem;
     //[SerializeField] private Transform _startItem;
