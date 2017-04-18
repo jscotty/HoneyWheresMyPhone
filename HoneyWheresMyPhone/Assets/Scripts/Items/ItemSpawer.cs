@@ -9,14 +9,15 @@ public class ItemSpawer : Singleton<ItemSpawer>
     [SerializeField]
     private float _botSpawnY;
     public List<GameObject> itemList;
-    [SerializeField]
-    private Transform _itemParent;
+    public Transform itemParent;
     [SerializeField]
     private Transform _leftBound;
     [SerializeField]
     private Transform _rightBound;
     private ItemController _itemController;
     private GameData _gameData;
+    [SerializeField]
+    private List<WaveData> _waves;
 
     private void Awake()
     {
@@ -61,45 +62,83 @@ public class ItemSpawer : Singleton<ItemSpawer>
                 tSpawnPos.y = _botSpawnY;
                 break;
         }
-        GameObject tItem = Instantiate(itemList[tRandomItemindex], tSpawnPos, Quaternion.identity, _itemParent);
+        GameObject tItem = Instantiate(itemList[tRandomItemindex], tSpawnPos, Quaternion.identity, itemParent);
         ItemBase tItemScript = tItem.GetComponent<ItemBase>();
         tItemScript.itemIndexForSpawning = tRandomItemindex;
         _itemController.AddItemToList(tItem.GetComponent<ItemBase>());
     }
 
+    //TODO create chunk spawener
+
+    /// <summary>
+    /// creates an item at a fixed world position in the itemparent  
+    /// </summary>
+    /// <param name="iPosition">the spawnposition</param>
+    /// <param name="iItem">the item to spawn</param>
     public void CreateItemAtFixedPosition(Vector3 iPosition, GameObject iItem)
     {
         if (_itemController == null)
         {
             _itemController = ItemController.Instance;
         }
-        GameObject tItem = Instantiate(iItem, iPosition, Quaternion.identity, _itemParent);
+        GameObject tItem = Instantiate(iItem, iPosition, Quaternion.identity, itemParent);
         ItemBase tItemScript = tItem.GetComponent<ItemBase>();
         _itemController.AddItemToList(tItemScript);
 
     }
 
-
+    /// <summary>
+    /// creates an item at a fixed local position in the itemparent
+    /// </summary>
+    /// <param name="iLocalPosition">the local position</param>
+    /// <param name="iItem">the item that will be spawned</param>
     public void CreateItemAtFixedLocalPosition(Vector3 iLocalPosition, GameObject iItem)
     {
         if (_itemController == null)
         {
             _itemController = ItemController.Instance;
         }
-        GameObject tItem = Instantiate(iItem, new Vector3(0, _topSpawnY, 0), Quaternion.identity, _itemParent);
+        GameObject tItem = Instantiate(iItem, new Vector3(0, _topSpawnY, 0), Quaternion.identity, itemParent);
         tItem.transform.localPosition = iLocalPosition;
         _itemController.AddItemToList(tItem.GetComponent<ItemBase>());
     }
 
+    /// <summary>
+    /// creates an item at a fixed local position in the itemparent
+    /// </summary>
+    /// <param name="iLocalPosition">that local position</param>
+    /// <param name="iItemSpawnIndex">the index of the item to spawn from the itemlist</param>
     public void CreateItemAtFixedLocalPosition(Vector3 iLocalPosition, int iItemSpawnIndex)
     {
         if (_itemController == null)
         {
             _itemController = ItemController.Instance;
         }
-        GameObject tItem = Instantiate(itemList[iItemSpawnIndex], new Vector3(0, _topSpawnY, 0), Quaternion.identity, _itemParent);
+        GameObject tItem = Instantiate(itemList[iItemSpawnIndex], new Vector3(0, _topSpawnY, 0), Quaternion.identity, itemParent);
         tItem.transform.localPosition = iLocalPosition;
         _itemController.AddItemToList(tItem.GetComponent<ItemBase>());
+    }
+
+    public void SpawnRandomWave()
+    {
+        int tWaveIndex = Random.Range(0, _waves.Count);
+        for (int i = 0; i < _waves[tWaveIndex].xPositions.Length; i++)
+        {
+
+        }
+    }
+
+    [System.Serializable]
+    struct WaveData
+    {
+        public float[] xPositions;
+        public int difficulty; //if we want to sort them accordng to difficulties this will be an useful var
+
+        public WaveData(int iDifficulty, params float[] iXposition)
+        {
+            xPositions = iXposition;
+            difficulty = iDifficulty;
+        }
     }
 }
 
