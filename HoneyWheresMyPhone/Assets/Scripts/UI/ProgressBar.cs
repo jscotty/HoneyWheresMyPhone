@@ -69,8 +69,5 @@ public class ProgressBar : Singleton<ProgressBar> {
             Vector2 tPosition = Vector2.Lerp(-_uiObjectDesiredLocation, _startPos, 1-Mathf.Lerp(0,_recordedPercentage,tPercentage));
             _uiObject.anchoredPosition = tPosition;
         }
-#if UNITY_EDITOR
-        Debug.Log(tPercentage);
-#endif
     }
 }

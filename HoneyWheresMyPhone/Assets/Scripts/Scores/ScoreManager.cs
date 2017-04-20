@@ -25,7 +25,6 @@ public class ScoreManager : Singleton<ScoreManager> {
 
     public void ResetScore()
     {
-        Debug.Log(scoreCurrentRound);
         if(depthCurrentRound > MeterHighscore) {
             PlayerPrefs.SetFloat("HighScore", depthCurrentRound);
         }

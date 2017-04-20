@@ -31,6 +31,14 @@ public class ItemSpawer : Singleton<ItemSpawer>
 
     private void Start()
     {
+        if (_itemController == null)
+        {
+            _itemController = ItemController.Instance;
+        }
+        if (_gameData == null)
+        {
+            _gameData = GameData.Instance;
+        }
         SpawnEndItem();
         StartCoroutine("ItemSpawnDelay");
     }
@@ -146,6 +154,21 @@ public class ItemSpawer : Singleton<ItemSpawer>
 
     public void SpawnEndItem()
     {
+        if (_itemController == null)
+        {
+            _itemController = ItemController.Instance;
+        }
+        if (_gameData == null)
+        {
+            _gameData = GameData.Instance;
+#if UNITY_EDITOR
+            if (GameData.Instance == null)
+            {
+                Debug.Log("vilshvplqhiegi");
+            }
+            Debug.LogWarning("testing " + GameData.Instance.name);
+#endif
+        }
         float tDepth = _gameData.endItemDepth;
 
         if (_itemController == null)
