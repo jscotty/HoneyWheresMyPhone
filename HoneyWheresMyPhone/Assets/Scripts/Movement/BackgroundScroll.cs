@@ -10,7 +10,14 @@ public class BackgroundScroll : MonoBehaviour
     [SerializeField] private float _scrollSpeed;
     private Vector2 _currentOffset;
     [SerializeField] private Renderer _renderer;
+    private GameData _gameData;
 
+    private void Awake()
+    {
+        GameObject tGameobject = GameObject.FindGameObjectWithTag("GameData");
+        _gameData = tGameobject.GetComponent<GameData>();
+
+    }
     /// <summary>
     /// Sets the start Offset for the background texture
     /// </summary>
@@ -24,11 +31,11 @@ public class BackgroundScroll : MonoBehaviour
     /// </summary>
     private void FixedUpdate()
     {
-        if (GameData.Instance.direction == Direction.UP)
+        if (_gameData.direction == Direction.UP)
         {
             _currentOffset.y += Mathf.Repeat(Time.fixedDeltaTime * _scrollSpeed * 0.495f, 1); //The 0.495f is to make it scroll at the same speed as the items
         }
-        else if (GameData.Instance.direction == Direction.DOWN)
+        else if (_gameData.direction == Direction.DOWN)
         {
             _currentOffset.y -= Mathf.Repeat(Time.fixedDeltaTime * _scrollSpeed * 0.495f, 1);
         }

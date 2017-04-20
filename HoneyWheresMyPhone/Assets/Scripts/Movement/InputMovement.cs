@@ -7,12 +7,20 @@ using UnityEngine;
 public class InputMovement : MonoBehaviour
 {
 
+    private GameData _gameData;
+
+    private void Awake()
+    {
+        GameObject tGameobject = GameObject.FindGameObjectWithTag("GameData");
+        _gameData = tGameobject.GetComponent<GameData>();
+
+    }
     /// <summary>
     /// Moves the gameObject to the position of the mouse/touch position
     /// </summary>
 	void FixedUpdate()
     {
-        if (GameData.Instance.direction != Direction.NONE)
+        if (_gameData.direction != Direction.NONE)
         {
             float tNewPos = 0;
             if (Input.touchCount > 0)

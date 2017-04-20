@@ -13,14 +13,14 @@ public class ItemController : Singleton<ItemController>
     private bool _useDestroyLogic; //if this is true is the destroy/instantiae logic else use the disable/enable logic for the items
     private GameData _gameData;
     private ItemSpawer _itemSpawer;
-
     /// <summary>
     /// create references to the needed scripts and collects data where n eeded on startup  
     /// </summary>
     private void Awake()
     {
         GetBounds();
-        _gameData = GameData.Instance;
+        GameObject tGameobject = GameObject.FindGameObjectWithTag("GameData");
+        _gameData = tGameobject.GetComponent<GameData>();
         _itemSpawer = ItemSpawer.Instance;
     }
 

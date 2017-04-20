@@ -10,6 +10,20 @@ public class HookCollision : MonoBehaviour
     //private List<ItemBase> _itemScores = new List<ItemBase>();
     [SerializeField] private Scrolling _scrolling;
     [SerializeField] private BackgroundScroll _backgroundScroll;
+    private GameData _gameData;
+    private ItemSpawer _itemSpawner;
+
+    private void Awake()
+    {
+        GameObject tGameobject = GameObject.FindGameObjectWithTag("GameData");
+        _gameData = tGameobject.GetComponent<GameData>();
+        tGameobject = GameObject.FindGameObjectWithTag("ItemSpawner");
+        _itemSpawner = tGameobject.GetComponent<ItemSpawer>();
+#if UNITY_EDITOR
+        Debug.Log("krijg de tering");
+        Debug.Log("gamedata? " + _gameData);
+#endif
+    }
 
     /// <summary>
     /// Triggers when an object is touched, if it is an item it will grab it and start moving up if it isn't already
@@ -19,10 +33,10 @@ public class HookCollision : MonoBehaviour
     {
         if (collision.gameObject.CompareTag(_itemTag))
         {
-            if (GameData.Instance.direction != Direction.UP)
+            if (_gameData.direction != Direction.UP)
             {
-                GameData.Instance.direction = Direction.UP;
-                ItemSpawer.Instance.StopSpawningItems();
+                _gameData.direction = Direction.UP;
+                _itemSpawner.StopSpawningItems();
             }
             collision.gameObject.GetComponent<Collider2D>().enabled = false;
             collision.gameObject.transform.SetParent(transform);

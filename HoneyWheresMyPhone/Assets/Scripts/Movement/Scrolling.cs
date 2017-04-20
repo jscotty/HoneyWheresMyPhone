@@ -18,9 +18,18 @@ public class Scrolling : MonoBehaviour
 
     private float _desiredHandYPosition;
 
+    private GameData _gameData;
+
+    private void Awake()
+    {
+        GameObject tGameobject = GameObject.FindGameObjectWithTag("GameData");
+        _gameData = tGameobject.GetComponent<GameData>();
+
+    }
+
     private void Start()
     {
-        GameData.Instance.direction = Direction.DOWN;
+        _gameData.direction = Direction.DOWN;
         _desiredHandYPosition = _hand.transform.position.y - _desiredHandMovement;
         _startPosition = (Vector2)transform.position;
     }
@@ -30,7 +39,7 @@ public class Scrolling : MonoBehaviour
     /// </summary>
     private void FixedUpdate()
     {
-        if (GameData.Instance.direction == Direction.UP)
+        if (_gameData.direction == Direction.UP)
         {
             if (!setDepth)
             {
@@ -40,7 +49,7 @@ public class Scrolling : MonoBehaviour
             transform.Translate(Vector2.down * _speed / 20);
             if(transform.position.y <= _startPosition.y)
             {
-                GameData.Instance.direction = Direction.NONE;
+                _gameData.direction = Direction.NONE;
                 _endScreen.SetActive(true);
             }
             if (moveHand)
@@ -53,7 +62,7 @@ public class Scrolling : MonoBehaviour
                 }
             }
         }
-        else if(GameData.Instance.direction == Direction.DOWN)
+        else if(_gameData.direction == Direction.DOWN)
         {
             transform.Translate(Vector2.up * _speed / 20);
         }

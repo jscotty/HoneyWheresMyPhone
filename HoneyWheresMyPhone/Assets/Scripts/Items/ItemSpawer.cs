@@ -17,28 +17,28 @@ public class ItemSpawer : Singleton<ItemSpawer>
     [SerializeField]
     private Transform _rightBound;
     private ItemController _itemController;
-    private GameData _gameData;
     [SerializeField]
     private List<WaveData> _waves;
     [SerializeField]
     private float _itemSpawnDelay;
+    private GameData _gameData;
+    private ProgressBar _progressBar;
+    private ItemSpawer _itemSpawner;
 
     private void Awake()
     {
-        _gameData = GameData.Instance;
-        _itemController = ItemController.Instance;
+        GameObject tGameobject = GameObject.FindGameObjectWithTag("GameData");
+        _gameData = tGameobject.GetComponent<GameData>();
+        //_itemController = ItemController.Instance;
+        tGameobject = GameObject.FindGameObjectWithTag("ProgressBar");
+        _progressBar = tGameobject.GetComponent<ProgressBar>();
+        tGameobject = GameObject.FindGameObjectWithTag("ItemSpawner");
+        _itemSpawner = tGameobject.GetComponent<ItemSpawer>();
+        _itemController = tGameobject.GetComponent<ItemController>();
     }
 
     private void Start()
     {
-        if (_itemController == null)
-        {
-            _itemController = ItemController.Instance;
-        }
-        if (_gameData == null)
-        {
-            _gameData = GameData.Instance;
-        }
         SpawnEndItem();
         StartCoroutine("ItemSpawnDelay");
     }
@@ -65,14 +65,6 @@ public class ItemSpawer : Singleton<ItemSpawer>
     /// <param name="iDirection"></param>
     public void CreateRandomItemAtRandomPosition()
     {
-        if (_itemController == null)
-        {
-            _itemController = ItemController.Instance;
-        }
-        if (_gameData == null)
-        {
-            _gameData = GameData.Instance;
-        }
         Vector3 tSpawnPos = Vector3.Lerp(_leftBound.transform.position,_rightBound.transform.position,Random.Range(0f,1f));
         int tRandomItemindex = Random.Range(0, itemList.Count);
         tSpawnPos.z = 0;
@@ -100,10 +92,6 @@ public class ItemSpawer : Singleton<ItemSpawer>
     /// <param name="iItem">the item to spawn</param>
     public void CreateItemAtFixedPosition(Vector3 iPosition, GameObject iItem)
     {
-        if (_itemController == null)
-        {
-            _itemController = ItemController.Instance;
-        }
         GameObject tItem = Instantiate(iItem, iPosition, Quaternion.identity, itemParent);
         ItemBase tItemScript = tItem.GetComponent<ItemBase>();
         _itemController.AddItemToList(tItemScript);
@@ -117,10 +105,6 @@ public class ItemSpawer : Singleton<ItemSpawer>
     /// <param name="iItem">the item that will be spawned</param>
     public void CreateItemAtFixedLocalPosition(Vector3 iLocalPosition, GameObject iItem)
     {
-        if (_itemController == null)
-        {
-            _itemController = ItemController.Instance;
-        }
         GameObject tItem = Instantiate(iItem, new Vector3(0, _topSpawnY, 0), Quaternion.identity, itemParent);
         tItem.transform.localPosition = iLocalPosition;
         _itemController.AddItemToList(tItem.GetComponent<ItemBase>());
@@ -133,10 +117,6 @@ public class ItemSpawer : Singleton<ItemSpawer>
     /// <param name="iItemSpawnIndex">the index of the item to spawn from the itemlist</param>
     public void CreateItemAtFixedLocalPosition(Vector3 iLocalPosition, int iItemSpawnIndex)
     {
-        if (_itemController == null)
-        {
-            _itemController = ItemController.Instance;
-        }
         GameObject tItem = Instantiate(itemList[iItemSpawnIndex], new Vector3(0, _topSpawnY, 0), Quaternion.identity, itemParent);
         tItem.transform.localPosition = iLocalPosition;
         _itemController.AddItemToList(tItem.GetComponent<ItemBase>());
@@ -154,33 +134,7 @@ public class ItemSpawer : Singleton<ItemSpawer>
 
     public void SpawnEndItem()
     {
-        if (_itemController == null)
-        {
-            _itemController = ItemController.Instance;
-        }
-        if (_gameData == null)
-        {
-            _gameData = GameData.Instance;
-#if UNITY_EDITOR
-            if (GameData.Instance == null)
-            {
-                Debug.Log("vilshvplqhiegi");
-            }
-            Debug.LogWarning("testing " + GameData.Instance.name);
-#endif
-        }
-        float tDepth = _gameData.endItemDepth;
-
-        if (_itemController == null)
-        {
-            _itemController = ItemController.Instance;
-        }
-        if (_gameData == null)
-        {
-            _gameData = GameData.Instance;
-        }
         Vector3 tSpawnPos = Vector3.Lerp(_leftBound.transform.position, _rightBound.transform.position, Random.Range(0f, 1f));
-        int tRandomItemindex = Random.Range(0, itemList.Count);
         tSpawnPos.z = 0;
         tSpawnPos.y = -_gameData.endItemDepth;
         GameObject tItem = Instantiate(endItem, tSpawnPos, Quaternion.identity);
@@ -188,7 +142,7 @@ public class ItemSpawer : Singleton<ItemSpawer>
         Vector3 tSpawnLocalPos =    tItem.transform.localPosition;
         tSpawnLocalPos.y = -_gameData.endItemDepth;
         tItem.transform.localPosition = tSpawnLocalPos;
-        ProgressBar.Instance.EndItem = tItem.transform;
+        _progressBar.EndItem = tItem.transform;
     }
 
     IEnumerator ItemSpawnDelay()

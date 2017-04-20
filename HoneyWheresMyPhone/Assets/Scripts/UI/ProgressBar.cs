@@ -13,6 +13,7 @@ public class ProgressBar : Singleton<ProgressBar> {
         set
         {
             _endItem = value;
+            _endItemPos = _endItem.position;
         }
     }
     private Transform _endItem;
@@ -33,7 +34,7 @@ public class ProgressBar : Singleton<ProgressBar> {
         /* //this is for debugging
         //_endItem = _endItemSerializefield;
         */
-        _endItemPos = _endItem.position;
+        //_endItemPos = _endItem.position;
         _startPos = _uiObject.anchoredPosition;
         StartItem = _startPosTransform;
         _uiObjectDesiredLocation = -_uiObject.anchoredPosition;
