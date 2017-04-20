@@ -22,6 +22,7 @@ public class HookCollision : MonoBehaviour
             if (GameData.Instance.direction != Direction.UP)
             {
                 GameData.Instance.direction = Direction.UP;
+                ItemSpawer.Instance.StopSpawningItems();
             }
             collision.gameObject.GetComponent<Collider2D>().enabled = false;
             collision.gameObject.transform.SetParent(transform);

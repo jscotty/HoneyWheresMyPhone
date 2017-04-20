@@ -9,6 +9,8 @@ public class ItemSpawer : Singleton<ItemSpawer>
     [SerializeField]
     private float _botSpawnY;
     public List<GameObject> itemList;
+    [SerializeField]
+    private GameObject endItem; // nce we get more end items this has to be turned into a list
     public Transform itemParent;
     [SerializeField]
     private Transform _leftBound;
@@ -18,11 +20,24 @@ public class ItemSpawer : Singleton<ItemSpawer>
     private GameData _gameData;
     [SerializeField]
     private List<WaveData> _waves;
+    [SerializeField]
+    private float _itemSpawnDelay;
 
     private void Awake()
     {
         _gameData = GameData.Instance;
         _itemController = ItemController.Instance;
+    }
+
+    private void Start()
+    {
+        SpawnEndItem();
+        StartCoroutine("ItemSpawnDelay");
+    }
+
+    public void StopSpawningItems()
+    {
+        StopCoroutine("ItemSpawnDelay");
     }
 
 #if UNITY_EDITOR //as long as the update is just for debugging leave this here
@@ -121,10 +136,46 @@ public class ItemSpawer : Singleton<ItemSpawer>
 
     public void SpawnRandomWave()
     {
+        //TO/do finish wave spawning
         int tWaveIndex = Random.Range(0, _waves.Count);
         for (int i = 0; i < _waves[tWaveIndex].xPositions.Length; i++)
         {
 
+        }
+    }
+
+    public void SpawnEndItem()
+    {
+        float tDepth = _gameData.endItemDepth;
+
+        if (_itemController == null)
+        {
+            _itemController = ItemController.Instance;
+        }
+        if (_gameData == null)
+        {
+            _gameData = GameData.Instance;
+        }
+        Vector3 tSpawnPos = Vector3.Lerp(_leftBound.transform.position, _rightBound.transform.position, Random.Range(0f, 1f));
+        int tRandomItemindex = Random.Range(0, itemList.Count);
+        tSpawnPos.z = 0;
+        tSpawnPos.y = -_gameData.endItemDepth;
+        GameObject tItem = Instantiate(endItem, tSpawnPos, Quaternion.identity);
+        tItem.transform.SetParent(itemParent,true);
+        Vector3 tSpawnLocalPos =    tItem.transform.localPosition;
+        tSpawnLocalPos.y = -_gameData.endItemDepth;
+        tItem.transform.localPosition = tSpawnLocalPos;
+    }
+
+    IEnumerator ItemSpawnDelay()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(_itemSpawnDelay);
+            for (int i = 0; i < 3; i++)
+            {
+                CreateRandomItemAtRandomPosition();
+            } 
         }
     }
 

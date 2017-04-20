@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameData : Singleton<GameData>
 {
     public Direction direction;
+    public float endItemDepth;
 }
 
 public enum Direction
