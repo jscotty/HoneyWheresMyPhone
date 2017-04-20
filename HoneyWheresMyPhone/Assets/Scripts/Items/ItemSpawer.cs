@@ -165,6 +165,7 @@ public class ItemSpawer : Singleton<ItemSpawer>
         Vector3 tSpawnLocalPos =    tItem.transform.localPosition;
         tSpawnLocalPos.y = -_gameData.endItemDepth;
         tItem.transform.localPosition = tSpawnLocalPos;
+        ProgressBar.Instance.EndItem = tItem.transform;
     }
 
     IEnumerator ItemSpawnDelay()
@@ -172,7 +173,7 @@ public class ItemSpawer : Singleton<ItemSpawer>
         while (true)
         {
             yield return new WaitForSeconds(_itemSpawnDelay);
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 2; i++)
             {
                 CreateRandomItemAtRandomPosition();
             } 

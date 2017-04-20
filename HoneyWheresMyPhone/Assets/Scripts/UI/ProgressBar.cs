@@ -2,10 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ProgressBar : MonoBehaviour {
+public class ProgressBar : Singleton<ProgressBar> {
 
-	public Transform endItem { private get; set; }
-    public Transform startItem { private get; set; }
+	public Transform EndItem
+    {
+        private get
+        {
+            return _endItem;
+        }
+        set
+        {
+            _endItem = value;
+            _targetStartPos = value.position;
+        }
+    }
+    private Transform _endItem;
+    public Transform StartItem { private get; set; }
         /* this is for debugging
     //[SerializeField] private Transform _endItem;
     //[SerializeField] private Transform _startItem;
@@ -15,10 +27,13 @@ public class ProgressBar : MonoBehaviour {
 
     private Vector2 _targetStartPos;
     
-    [SerializeField] private Transform _uiObject;
+    [SerializeField] private RectTransform _uiObject;
+
+    [SerializeField] private Transform _startPosTransform;
 
     private Vector2 _startPos;
     [SerializeField] private Vector2 _uiObjectDesiredLocation;
+    private float _recordedPercentage;
 
     private void Start()
     {
@@ -26,30 +41,36 @@ public class ProgressBar : MonoBehaviour {
         //endItem = _endItem;
         //startItem = _startItem;
         */
-        _targetStartPos = (Vector2)endItem.position;
+        //_targetStartPos = (Vector2)EndItem.position;
         _startPos = -_uiObjectDesiredLocation;
+        StartItem = _startPosTransform;
     }
 
     private void Update()
     {
-        float tPercentage;
+        float tPercentage = 0;
         if(GameData.Instance.direction == Direction.DOWN)
         {
-            tPercentage = endItem.position.y / _targetStartPos.y;
-            Vector2 tPosition = Vector2.Lerp(_uiObjectDesiredLocation, _startPos, tPercentage);
-            _uiObject.localPosition = tPosition;
+            tPercentage = EndItem.position.y / _targetStartPos.y;
+            Vector2 tPosition = Vector2.Lerp(_uiObjectDesiredLocation, _startPos,  1- tPercentage);
+            _uiObject.anchoredPosition = tPosition;
+            _recordedPercentage = tPercentage;
         }
         else if(GameData.Instance.direction == Direction.UP)
         {
             if (!backToStart)
             {
-                _targetStartPos = startItem.position;
+                _targetStartPos = StartItem.position;
                 _startPos = -_startPos;
                 backToStart = true;
             }
-            tPercentage = startItem.position.y / _targetStartPos.y;
-            Vector2 tPosition = Vector2.Lerp(-_uiObjectDesiredLocation, _startPos, tPercentage);
-            _uiObject.localPosition = tPosition;
+            tPercentage = StartItem.position.y / _targetStartPos.y;
+
+            Vector2 tPosition = Vector2.Lerp(-_uiObjectDesiredLocation, _startPos, 1-Mathf.Lerp(0,_recordedPercentage,tPercentage));
+            _uiObject.anchoredPosition = tPosition;
         }
+#if UNITY_EDITOR
+        Debug.Log(tPercentage);
+#endif
     }
 }
