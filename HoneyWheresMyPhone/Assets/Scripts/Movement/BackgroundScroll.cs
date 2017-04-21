@@ -33,11 +33,11 @@ public class BackgroundScroll : MonoBehaviour
     {
         if (_gameData.direction == Direction.UP)
         {
-            _currentOffset.y += Mathf.Repeat(Time.fixedDeltaTime * _scrollSpeed * 0.495f, 1); //The 0.495f is to make it scroll at the same speed as the items
+            _currentOffset.y += Mathf.Repeat(Time.fixedDeltaTime * _scrollSpeed * 0.252f, 1); //The 0.252f is to make it scroll at the same speed as the items
         }
         else if (_gameData.direction == Direction.DOWN)
         {
-            _currentOffset.y -= Mathf.Repeat(Time.fixedDeltaTime * _scrollSpeed * 0.495f, 1);
+            _currentOffset.y -= Mathf.Repeat(Time.fixedDeltaTime * _scrollSpeed * 0.252f, 1);
         }
         Vector2 offset = new Vector2(_currentOffset.x, _currentOffset.y);
         _renderer.sharedMaterial.SetTextureOffset("_MainTex", offset);
