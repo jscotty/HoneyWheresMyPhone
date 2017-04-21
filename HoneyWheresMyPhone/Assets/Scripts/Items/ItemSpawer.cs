@@ -17,8 +17,8 @@ public class ItemSpawer : Singleton<ItemSpawer>
     [SerializeField]
     private Transform _rightBound;
     private ItemController _itemController;
-    [SerializeField]
-    private List<WaveData> _waves;
+    //[SerializeField]
+    //private List<WaveData> _waves;
     [SerializeField]
     private float _itemSpawnDelay;
     private GameData _gameData;
@@ -47,16 +47,6 @@ public class ItemSpawer : Singleton<ItemSpawer>
     {
         StopCoroutine("ItemSpawnDelay");
     }
-
-#if UNITY_EDITOR //as long as the update is just for debugging leave this here
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            CreateRandomItemAtRandomPosition();
-        }
-    }
-#endif
 
     /// <summary>
     /// This function creates one random item from the itemlist at a random position.
@@ -122,15 +112,16 @@ public class ItemSpawer : Singleton<ItemSpawer>
         _itemController.AddItemToList(tItem.GetComponent<ItemBase>());
     }
 
+    /* //TODO finish this
     public void SpawnRandomWave()
     {
-        //TO/do finish wave spawning
         int tWaveIndex = Random.Range(0, _waves.Count);
         for (int i = 0; i < _waves[tWaveIndex].xPositions.Length; i++)
         {
 
         }
     }
+    */
 
     public void SpawnEndItem()
     {
@@ -157,6 +148,7 @@ public class ItemSpawer : Singleton<ItemSpawer>
         }
     }
 
+    /*
     [System.Serializable]
     struct WaveData
     {
@@ -169,5 +161,6 @@ public class ItemSpawer : Singleton<ItemSpawer>
             difficulty = iDifficulty;
         }
     }
+    */
 }
 

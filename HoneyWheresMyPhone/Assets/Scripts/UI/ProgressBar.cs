@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ProgressBar : Singleton<ProgressBar> {
+public class ProgressBar : MonoBehaviour {
 
 	public Transform EndItem
     {
