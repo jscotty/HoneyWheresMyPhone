@@ -10,6 +10,8 @@ public class HookCollision : MonoBehaviour
     //private List<ItemBase> _itemScores = new List<ItemBase>();
     [SerializeField] private Scrolling _scrolling;
     [SerializeField] private BackgroundScroll _backgroundScroll;
+    [SerializeField] private AudioClip _collectSound;
+    [SerializeField] private AudioClip _collectEndSound;
     private GameData _gameData;
     private ItemSpawer _itemSpawner;
 
@@ -20,8 +22,7 @@ public class HookCollision : MonoBehaviour
         tGameobject = GameObject.FindGameObjectWithTag("ItemSpawner");
         _itemSpawner = tGameobject.GetComponent<ItemSpawer>();
 #if UNITY_EDITOR
-        Debug.Log("krijg de tering");
-        Debug.Log("gamedata? " + _gameData);
+        //Debug.Log("gamedata? " + _gameData);
 #endif
     }
 
@@ -46,7 +47,12 @@ public class HookCollision : MonoBehaviour
             ScoreManager.Instance.scoreCurrentRound += tItemScores.Score();
             if (tItemScores.EndObject())
             {
+                SoundController.Instance.PlaySound(_collectSound);
                 ScoreManager.Instance.gainedEndObject = true;
+            }
+            else
+            {
+                SoundController.Instance.PlaySound(_collectEndSound);
             }
         }
     }

@@ -23,6 +23,7 @@ public class ProgressBar : Singleton<ProgressBar> {
     //[SerializeField] private Transform _endItemSerializefield;
     */
     [SerializeField] private RectTransform _uiObject;
+    [SerializeField] private RectTransform _endUiObject;
 
     [SerializeField] private Transform _startPosTransform;
 
@@ -38,6 +39,7 @@ public class ProgressBar : Singleton<ProgressBar> {
         _startPos = _uiObject.anchoredPosition;
         StartItem = _startPosTransform;
         _uiObjectDesiredLocation = -_uiObject.anchoredPosition;
+        StartCoroutine(checkForEnd());
     }
 
     private void Update()
@@ -47,5 +49,23 @@ public class ProgressBar : Singleton<ProgressBar> {
         Vector2 tPosition = Vector2.Lerp(_startPos, _uiObjectDesiredLocation, tPercentage);
         //Debug.Log(tPercentage + " " + tPosition + " " + _startPos + " " + _uiObjectDesiredLocation);
         _uiObject.anchoredPosition = tPosition;
+    }
+
+    private IEnumerator checkForEnd()
+    {
+        while (true)
+        {
+            if (ScoreManager.Instance.gainedEndObject)
+            {
+                _endUiObject.SetParent(_uiObject);
+                _endUiObject.SetSiblingIndex(0);
+                yield break;
+            }
+            else
+            {
+                yield return new WaitForSeconds(1);
+            }
+        }
+
     }
 }

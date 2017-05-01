@@ -25,7 +25,7 @@ public class SoundController : Singleton<SoundController>
     /// <param name="iRepeating">Does the sound have to repeat</param>
     /// <param name="iParentForSound">Parental gameobject where the sound has to come from</param>
     /// <param name="iStringForDestroy">String to call the sound on if it needs to be destroyed</param>
-    public void PlaySound(AudioClip iSound, bool iRepeating, Transform iParentForSound = null, string iStringForDestroy = "")
+    public void PlaySound(AudioClip iSound, float iVolume = 1, Transform iParentForSound = null, bool iRepeating = false, string iStringForDestroy = "", bool iDontDestroyOnLoad = false)
     {
         AudioSource tAudioSource = Instantiate(_soundObject).GetComponent<AudioSource>();
         if (iParentForSound != null)
@@ -34,6 +34,7 @@ public class SoundController : Singleton<SoundController>
         }
         tAudioSource.loop = iRepeating;
         tAudioSource.clip = iSound;
+        tAudioSource.volume = iVolume;
         tAudioSource.Play();
         if (!iRepeating)
         {
@@ -44,6 +45,10 @@ public class SoundController : Singleton<SoundController>
             _currentSounds.Add(iStringForDestroy);
             _currentAudioSources.Add(tAudioSource);
         }
+        if (iDontDestroyOnLoad)
+        {
+            DontDestroyOnLoad(tAudioSource.gameObject);
+        }
     }
 
     /// <summary>
@@ -52,11 +57,18 @@ public class SoundController : Singleton<SoundController>
     /// <param name="iAudioSource">The AudioSource to test</param>
     IEnumerator DestroyAFterDone(AudioSource iAudioSource)
     {
-        while (iAudioSource.isPlaying)
+        while (iAudioSource != null)
         {
-            yield return new WaitForSeconds(1);
+            if (iAudioSource.isPlaying)
+            {
+                yield return new WaitForSeconds(1);
+            }
+            else
+            {
+                Destroy(iAudioSource.gameObject);
+                yield break;
+            }
         }
-        Destroy(iAudioSource.gameObject);
     }
 
     /// <summary>
@@ -65,8 +77,10 @@ public class SoundController : Singleton<SoundController>
     /// <param name="iSoundToDestroy">The AudioSource that you want to be destroyed</param>
     public void DestroyAudioSource(string iSoundToDestroy)
     {
+        Debug.Log(_currentSounds.Count);
         for (int i = 0; i < _currentSounds.Count; i++)
         {
+            Debug.Log(_currentSounds[i]);
             if (_currentSounds[i] == iSoundToDestroy)
             {
                 AudioSource tAudioSource = _currentAudioSources[i];
