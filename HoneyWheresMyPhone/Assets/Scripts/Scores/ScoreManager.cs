@@ -3,33 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ScoreManager : Singleton<ScoreManager> {
-
-	//public int ScoreTotal { get; private set; }
-    public float MeterHighscore { get; private set; }
+    
     public int scoreCurrentRound = 0;
     public float depthCurrentRound = 0;
     public bool gainedEndObject = false;
 
-    private void Start()
-    {
-        UpdateHighScore();
-    }
-
-    private void UpdateHighScore()
-    {
-        if (PlayerPrefs.HasKey("HighScore"))
-        {
-            MeterHighscore = PlayerPrefs.GetFloat("HighScore");
-        }
-    }
-
     public void ResetScore()
     {
-        if(depthCurrentRound > MeterHighscore) {
+        if(depthCurrentRound > PlayerPrefs.GetFloat("HighScore")) {
             PlayerPrefs.SetFloat("HighScore", depthCurrentRound);
         }
-        UpdateHighScore();
-        //ScoreTotal += scoreCurrentRound;
+        PlayerPrefs.SetFloat("MoneyTotal", PlayerPrefs.GetFloat("MoneyTotal") + scoreCurrentRound);
         scoreCurrentRound = 0;
+        depthCurrentRound = 0;
     }
 }

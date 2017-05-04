@@ -13,6 +13,6 @@ public class EndScreenText : MonoBehaviour {
         _depthTotal.text = ScoreManager.Instance.depthCurrentRound.ToString("#.00") + "m";
         _moneyTotal.text = ScoreManager.Instance.scoreCurrentRound.ToString();
         ScoreManager.Instance.ResetScore();
-        _highscoreDepth.text = ScoreManager.Instance.MeterHighscore.ToString("#.00") + "m";
+        _highscoreDepth.text = PlayerPrefs.GetFloat("HighScore").ToString("#.00") + "m";
 	}
 }
