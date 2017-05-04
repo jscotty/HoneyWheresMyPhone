@@ -20,16 +20,25 @@ public class Scrolling : MonoBehaviour
 
     private GameData _gameData;
 
+    private float _headStartTime;
+
     private void Awake()
     {
         GameObject tGameobject = GameObject.FindGameObjectWithTag("GameData");
         _gameData = tGameobject.GetComponent<GameData>();
-
+        PlayerPrefs.SetInt("HeadStartUpgrade", 5);
     }
 
     private void Start()
     {
-        _gameData.direction = Direction.DOWN;
+        if (PlayerPrefs.GetInt("HeadStartUpgrade") > 0)
+        {
+            _gameData.direction = Direction.HEADSTART;
+        }
+        else
+        {
+            _gameData.direction = Direction.DOWN;
+        }
         _desiredHandYPosition = _hand.transform.position.y - _desiredHandMovement;
         _startPosition = (Vector2)transform.position;
     }
@@ -39,32 +48,46 @@ public class Scrolling : MonoBehaviour
     /// </summary>
     private void FixedUpdate()
     {
-        if (_gameData.direction == Direction.UP)
+        switch (_gameData.direction)
         {
-            if (!setDepth)
-            {
-                ScoreManager.Instance.depthCurrentRound = transform.position.y;
-                setDepth = true;
-            }
-            transform.Translate(Vector2.down * _speed / 20);
-            if(transform.position.y <= _startPosition.y)
-            {
-                _gameData.direction = Direction.NONE;
-                _endScreen.SetActive(true);
-            }
-            if (moveHand)
-            {
-                _hand.Translate(Vector2.down * _speed / 50);
-                if (_hand.position.y <= _desiredHandYPosition)
+            case Direction.UP:
+                if (!setDepth)
                 {
-                    _hand.position = new Vector2(0, _desiredHandYPosition);
-                    moveHand = false;
+                    ScoreManager.Instance.depthCurrentRound = transform.position.y;
+                    setDepth = true;
                 }
+                transform.Translate(Vector2.down * _speed / 20);
+                if (transform.position.y <= _startPosition.y)
+                {
+                    _gameData.direction = Direction.NONE;
+                    _endScreen.SetActive(true);
+                }
+                if (moveHand)
+                {
+                    _hand.Translate(Vector2.down * _speed / 50);
+                    if (_hand.position.y <= _desiredHandYPosition)
+                    {
+                        _hand.position = new Vector2(0, _desiredHandYPosition);
+                        moveHand = false;
+                    }
+                }
+            break;
+            case (Direction.DOWN):
+                transform.Translate(Vector2.up * _speed / 20);
+            if(transform.position.y >= 200 + 200 * PlayerPrefs.GetInt("DepthUpgrade"))
+            {
+                _gameData.direction = Direction.UP;
             }
-        }
-        else if(_gameData.direction == Direction.DOWN)
-        {
-            transform.Translate(Vector2.up * _speed / 20);
+            break;
+            case (Direction.HEADSTART):
+                _headStartTime += Time.fixedDeltaTime;
+                int tHeadstartDepth = PlayerPrefs.GetInt("HeadStartUpgrade") * 50;
+                transform.position = Vector2.Lerp(_startPosition, Vector2.up * tHeadstartDepth, tHeadstartDepth);
+                if(_headStartTime >= 1)
+                {
+                    _gameData.direction = Direction.DOWN;
+                }
+            break;
         }
     }
 }
