@@ -27,7 +27,7 @@ public class VictorySound : MonoBehaviour {
             SoundController.Instance.PlaySound(_victoryMusic2, 1, null, false, "", true);
             yield return new WaitForSeconds(_victoryMusic2.length);
         }
-        SoundController.Instance.PlaySound(_backgroundMusic, 0.3f, null, true, "BGMusic", true);
+        SoundController.Instance.PlaySound(_backgroundMusic, 0.7f, null, true, "BGMusic", true);
         Destroy(this);
     }
 }

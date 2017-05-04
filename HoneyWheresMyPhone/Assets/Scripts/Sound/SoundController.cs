@@ -93,4 +93,18 @@ public class SoundController : Singleton<SoundController>
         }
         Debug.LogWarning("The sound '" + iSoundToDestroy + "' is not found");
     }
+
+    /// <summary>
+    /// Returns if a sound with the current string is playing
+    /// </summary>
+    /// <param name="iSoundToCheck">The string to check if it's currently being used</param>
+    /// <returns></returns>
+    public bool IsPlaying(string iSoundToCheck)
+    {
+        if (_currentSounds.Contains(iSoundToCheck))
+        {
+            return true;
+        }
+        return false;
+    }
 }
