@@ -14,9 +14,11 @@ public class HookCollision : MonoBehaviour
     [SerializeField] private AudioClip _collectEndSound;
     private GameData _gameData;
     private ItemSpawer _itemSpawner;
+    public static Transform handTransform;
 
     private void Awake()
     {
+        handTransform = transform;
         GameObject tGameobject = GameObject.FindGameObjectWithTag("GameData");
         _gameData = tGameobject.GetComponent<GameData>();
         tGameobject = GameObject.FindGameObjectWithTag("ItemSpawner");
@@ -40,19 +42,19 @@ public class HookCollision : MonoBehaviour
                 _itemSpawner.StopSpawningItems();
             }
             collision.gameObject.GetComponent<Collider2D>().enabled = false;
-            collision.gameObject.transform.SetParent(transform);
-            collision.gameObject.transform.localPosition = _desiredItemPosition;
+            collision.gameObject.transform.SetParent(null);
+            collision.gameObject.AddComponent<MoveOutOfScreen>();
             //_itemScores.Add(collision.gameObject.GetComponent<ItemBase>());
             ItemBase tItemScores = collision.gameObject.GetComponent<ItemBase>();
             ScoreManager.Instance.scoreCurrentRound += tItemScores.Score();
             if (tItemScores.EndObject())
             {
-                SoundController.Instance.PlaySound(_collectSound);
+                SoundController.Instance.PlaySound(_collectEndSound);
                 ScoreManager.Instance.gainedEndObject = true;
             }
             else
             {
-                SoundController.Instance.PlaySound(_collectEndSound);
+                SoundController.Instance.PlaySound(_collectSound);
             }
         }
     }
