@@ -31,13 +31,16 @@ public class BackgroundScroll : MonoBehaviour
     /// </summary>
     private void FixedUpdate()
     {
-        if (_gameData.direction == Direction.UP)
-        {
-            _currentOffset.y += Mathf.Repeat(Time.fixedDeltaTime * _scrollSpeed * 0.252f, 1); //The 0.252f is to make it scroll at the same speed as the items
-        }
-        else if (_gameData.direction == Direction.DOWN)
-        {
-            _currentOffset.y -= Mathf.Repeat(Time.fixedDeltaTime * _scrollSpeed * 0.252f, 1);
+        switch (_gameData.direction) {
+            case Direction.UP:
+                _currentOffset.y += Mathf.Repeat(Time.fixedDeltaTime * _scrollSpeed * 0.252f, 1); //The 0.252f is to make it scroll at the same speed as the items
+            break;
+            case Direction.DOWN:
+                _currentOffset.y -= Mathf.Repeat(Time.fixedDeltaTime * _scrollSpeed * 0.252f, 1);
+            break;
+            case Direction.HEADSTART:
+                _currentOffset.y -= Mathf.Repeat(Time.fixedDeltaTime * _scrollSpeed * 0.252f * 5 * PlayerPrefs.GetInt("HeadStartUpgrade"), 1);
+            break;
         }
         Vector2 offset = new Vector2(_currentOffset.x, _currentOffset.y);
         _renderer.sharedMaterial.SetTextureOffset("_MainTex", offset);

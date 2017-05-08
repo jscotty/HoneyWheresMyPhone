@@ -1,10 +1,27 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
+
+public class Progression : MonoBehaviour {
+
+    [SerializeField]
+    private Text _progressionText;
+    [SerializeField]
+    private string _textBehindDepth;
+    [SerializeField]
+    private Transform _movingObject;
+
+    private void FixedUpdate()
+    {
+        _progressionText.text = (int)_movingObject.position.y + _textBehindDepth;
+    }
+}
+
+/* OBSOLETE
 public class ProgressBar : MonoBehaviour {
-
-	public Transform EndItem
+    public Transform EndItem
     {
         private get
         {
@@ -19,9 +36,7 @@ public class ProgressBar : MonoBehaviour {
     private Transform _endItem;
     private Vector2 _endItemPos;
     public Transform StartItem { private get; set; }
-    /* //this is for debugging
-    //[SerializeField] private Transform _endItemSerializefield;
-    */
+
     [SerializeField] private RectTransform _uiObject;
     [SerializeField] private RectTransform _endUiObject;
 
@@ -32,10 +47,6 @@ public class ProgressBar : MonoBehaviour {
 
     private void Start()
     {
-        /* //this is for debugging
-        //_endItem = _endItemSerializefield;
-        */
-        //_endItemPos = _endItem.position;
         _startPos = _uiObject.anchoredPosition;
         StartItem = _startPosTransform;
         _uiObjectDesiredLocation = -_uiObject.anchoredPosition;
@@ -66,6 +77,5 @@ public class ProgressBar : MonoBehaviour {
                 yield return new WaitForSeconds(1);
             }
         }
-
     }
-}
+}*/

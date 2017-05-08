@@ -22,7 +22,7 @@ public class ItemSpawer : Singleton<ItemSpawer>
     [SerializeField]
     private float _itemSpawnDelay;
     private GameData _gameData;
-    private ProgressBar _progressBar;
+   // private ProgressBar _progressBar;
     private ItemSpawer _itemSpawner;
 
     private void Awake()
@@ -30,8 +30,8 @@ public class ItemSpawer : Singleton<ItemSpawer>
         GameObject tGameobject = GameObject.FindGameObjectWithTag("GameData");
         _gameData = tGameobject.GetComponent<GameData>();
         //_itemController = ItemController.Instance;
-        tGameobject = GameObject.FindGameObjectWithTag("ProgressBar");
-        _progressBar = tGameobject.GetComponent<ProgressBar>();
+        //tGameobject = GameObject.FindGameObjectWithTag("ProgressBar");
+        //_progressBar = tGameobject.GetComponent<ProgressBar>();
         tGameobject = GameObject.FindGameObjectWithTag("ItemSpawner");
         _itemSpawner = tGameobject.GetComponent<ItemSpawer>();
         _itemController = tGameobject.GetComponent<ItemController>();
@@ -133,7 +133,7 @@ public class ItemSpawer : Singleton<ItemSpawer>
         Vector3 tSpawnLocalPos =    tItem.transform.localPosition;
         tSpawnLocalPos.y = -_gameData.endItemDepth;
         tItem.transform.localPosition = tSpawnLocalPos;
-        _progressBar.EndItem = tItem.transform;
+        //_progressBar.EndItem = tItem.transform;
     }
 
     IEnumerator ItemSpawnDelay()
