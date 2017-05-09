@@ -26,7 +26,7 @@ public class Scrolling : MonoBehaviour
     {
         GameObject tGameobject = GameObject.FindGameObjectWithTag("GameData");
         _gameData = tGameobject.GetComponent<GameData>();
-        PlayerPrefs.SetInt("HeadStartUpgrade", 5);
+        PlayerPrefs.SetInt("HeadStartUpgrade", 1);
     }
 
     private void Start()
@@ -64,7 +64,7 @@ public class Scrolling : MonoBehaviour
                 }
                 if (moveHand)
                 {
-                    _hand.Translate(Vector2.down * _speed / 50);
+                    _hand.Translate(Vector2.down * _speed / 10 * Time.fixedDeltaTime);
                     if (_hand.position.y <= _desiredHandYPosition)
                     {
                         _hand.position = new Vector2(0, _desiredHandYPosition);
