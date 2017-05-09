@@ -5,10 +5,9 @@ using UnityEngine.UI;
 
 public class UpgradeTierController : MonoBehaviour {
 
-    private int[] upgradeCosts = new int[] { 400, 800, 1600, 3200 };
+    private int[] upgradeCosts = new int[] { 400, 800, 1600, 3200 }; //prices of the upgrades
     [SerializeField]
     private Image[] _images;
-
     [SerializeField]
     private Sprite _upgradeTrue;
     [SerializeField]
@@ -17,14 +16,14 @@ public class UpgradeTierController : MonoBehaviour {
     private Sprite _upgradeFalse;
     [SerializeField]
     private Text priceVisual;
-
     private int _currentTier;
 
+    /// <summary>
+    /// set the upgrade to a tier used on startup to set all the visuals to the visuals they need to be
+    /// </summary>
+    /// <param name="iTier">the tier the upgrade is set to</param>
     public void SetTier(int iTier)
     {
-#if UNITY_EDITOR
-        Debug.Log("set to " + iTier);
-#endif
         if (iTier > 5)
         {
             iTier = 5;
@@ -34,6 +33,9 @@ public class UpgradeTierController : MonoBehaviour {
         SetText();
     }
 
+    /// <summary>
+    /// updates all the visuals for this upgrade
+    /// </summary>
     public void Upgrade()
     {
         _currentTier++;
@@ -44,16 +46,10 @@ public class UpgradeTierController : MonoBehaviour {
         SetImages();
         SetText();
     }
-#if UNITY_EDITOR
-    public void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Upgrade();
-        }
-    }
-#endif
 
+    /// <summary>
+    /// sets the little dot images to the correct images
+    /// </summary>
     public void SetImages()
     {
         for (int i = 0; i < _images.Length; i++)
@@ -69,6 +65,9 @@ public class UpgradeTierController : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// Sets the price text for the upgrades
+    /// </summary>
     private void SetText()
     {
         
