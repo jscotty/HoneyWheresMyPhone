@@ -56,7 +56,7 @@ public class Scrolling : MonoBehaviour
                     ScoreManager.Instance.depthCurrentRound = transform.position.y;
                     setDepth = true;
                 }
-                transform.Translate(Vector2.down * _speed / 20);
+                transform.Translate(Vector2.down * _speed / 8 * Time.fixedDeltaTime * 10);
                 if (transform.position.y <= _startPosition.y)
                 {
                     _gameData.direction = Direction.NONE;

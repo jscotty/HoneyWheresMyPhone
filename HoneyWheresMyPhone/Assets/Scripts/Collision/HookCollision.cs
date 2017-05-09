@@ -16,6 +16,9 @@ public class HookCollision : MonoBehaviour
     private ItemSpawer _itemSpawner;
     public static Transform handTransform;
 
+    /// <summary>
+    /// Sets variables
+    /// </summary>
     private void Awake()
     {
         handTransform = transform;

@@ -33,7 +33,7 @@ public class BackgroundScroll : MonoBehaviour
     {
         switch (_gameData.direction) {
             case Direction.UP:
-                _currentOffset.y += Mathf.Repeat(Time.fixedDeltaTime * _scrollSpeed * 0.252f, 1); //The 0.252f is to make it scroll at the same speed as the items
+                _currentOffset.y += Mathf.Repeat(Time.fixedDeltaTime * _scrollSpeed / 20 * 8 * Time.fixedDeltaTime * 10 * 0.252f, 1); //The 0.252f is to make it scroll at the same speed as the items
             break;
             case Direction.DOWN:
                 _currentOffset.y -= Mathf.Repeat(Time.fixedDeltaTime * _scrollSpeed * 0.252f, 1);
