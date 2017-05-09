@@ -3364,6 +3364,7 @@ MonoBehaviour:
   - {fileID: 214692498}
   - {fileID: 2067459937}
   - {fileID: 1146834579}
+  _currentmoneyText: {fileID: 869411035}
 --- !u!1 &1318106730
 GameObject:
   m_ObjectHideFlags: 0
