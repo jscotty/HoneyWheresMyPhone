@@ -6,7 +6,8 @@ public class MoveOutOfScreen : MonoBehaviour {
     
     private float _strength = 0.5f;
     private float _speed = 1;
-    private Vector3 DesiredPosition = new Vector2(-4, 6.5f);
+    private Vector3 DesiredPosition = new Vector2(-3.5f, 9.5f);
+    private float _size = 1;
 
     private void Start()
     {
@@ -23,13 +24,17 @@ public class MoveOutOfScreen : MonoBehaviour {
         if (Vector2.Distance(transform.position, DesiredPosition) > _speed) {
             transform.Translate((DesiredPosition - transform.position).normalized / 10 * _speed);
             transform.Translate(Vector2.down * _strength);
+            transform.localScale = Vector3.one * _size;
             _strength *= 0.9f;
-            _speed *= 1.01f;
+            _speed *= 1.03f;
+            _size -= 0.015f;
         }
         else {
             Debug.Log("done");
             transform.position = DesiredPosition;
             transform.SetParent(HookCollision.handTransform);
+            GetComponent<Renderer>().enabled = false;
+            this.enabled = false;
         }
     }
 }
