@@ -37,9 +37,9 @@ public class HookCollision : MonoBehaviour
     /// <param name="collision"></param>
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag(_itemTag))
+        if (_gameData.direction != Direction.HEADSTART && collision.gameObject.CompareTag(_itemTag))
         {
-            if (_gameData.direction != Direction.UP)
+            if (_gameData.direction == Direction.DOWN)
             {
                 _gameData.direction = Direction.UP;
                 _itemSpawner.StopSpawningItems();
