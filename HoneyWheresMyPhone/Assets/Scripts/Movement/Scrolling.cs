@@ -73,8 +73,8 @@ public class Scrolling : MonoBehaviour
                 }
             break;
             case (Direction.DOWN):
-                transform.Translate(Vector2.up * _speed / 20);
-                if(transform.position.y >= 200 + 200 * PlayerPrefs.GetInt("DepthUpgrade"))
+                transform.Translate(Vector2.up * _speed / 20 * Time.fixedDeltaTime * 10);
+                if(transform.position.y >= 200 + (200 * PlayerPrefs.GetInt("DepthUpgrade")))
                 {
                     _gameData.direction = Direction.UP;
                 }
