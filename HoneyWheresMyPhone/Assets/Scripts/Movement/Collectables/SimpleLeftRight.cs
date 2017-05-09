@@ -19,7 +19,7 @@ public class SimpleLeftRight : MonoBehaviour {
 
     private void FixedUpdate()
     {
-        transform.Translate(Vector2.right * _right * _speed / 50);
+        transform.Translate(Vector2.right * _right * _speed / 2 * Time.fixedDeltaTime);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

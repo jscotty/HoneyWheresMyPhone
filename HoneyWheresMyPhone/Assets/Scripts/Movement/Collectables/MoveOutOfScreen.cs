@@ -9,6 +9,9 @@ public class MoveOutOfScreen : MonoBehaviour {
     private Vector3 DesiredPosition = new Vector2(-3.5f, 9.5f);
     private float _size = 1;
 
+    /// <summary>
+    /// Disables other movement scripts
+    /// </summary>
     private void Start()
     {
         MonoBehaviour[] scripts = gameObject.GetComponents<MonoBehaviour>();
@@ -19,6 +22,9 @@ public class MoveOutOfScreen : MonoBehaviour {
         this.enabled = true;
     }
 
+    /// <summary>
+    /// Moves the object, shrinks it and checks if it has reached it's destination
+    /// </summary>
     private void FixedUpdate()
     {
         if (Vector2.Distance(transform.position, DesiredPosition) > _speed) {

@@ -19,11 +19,11 @@ public class TowardsHand : MonoBehaviour {
         {
             if (_hand.position.x > transform.position.x)
             {
-                transform.Translate(Vector2.right * _speed / 50);
+                transform.Translate(Vector2.right * _speed / 2 * Time.fixedDeltaTime);
             }
             else
             {
-                transform.Translate(Vector2.left * _speed / 50);
+                transform.Translate(Vector2.left * _speed / 2 * Time.fixedDeltaTime);
             }
         }
         else

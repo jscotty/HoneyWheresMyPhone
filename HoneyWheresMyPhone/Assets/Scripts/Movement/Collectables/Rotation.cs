@@ -20,30 +20,30 @@ public class Rotation : MonoBehaviour {
         {
             if (_gameData.direction == Direction.DOWN)
             {
-                transform.Rotate(new Vector3(0, 0, -0.1f));
+                transform.Rotate(new Vector3(0, 0, -Time.fixedDeltaTime));
             }
             else if (_gameData.direction == Direction.UP)
             {
-                transform.Rotate(new Vector3(0, 0, 0.1f));
+                transform.Rotate(new Vector3(0, 0, Time.fixedDeltaTime));
             }
             else if (_gameData.direction == Direction.HEADSTART)
             {
-                transform.Rotate(new Vector3(0, 0, -0.4f));
+                transform.Rotate(new Vector3(0, 0, -Time.fixedDeltaTime * 4));
             }
         }
         else
         {
             if (_gameData.direction == Direction.DOWN)
             {
-                transform.Rotate(new Vector3(0, 0, 0.1f));
+                transform.Rotate(new Vector3(0, 0, Time.fixedDeltaTime));
             }
             else if (_gameData.direction == Direction.UP)
             {
-                transform.Rotate(new Vector3(0, 0, -0.1f));
+                transform.Rotate(new Vector3(0, 0, -Time.fixedDeltaTime));
             }
             else if (_gameData.direction == Direction.HEADSTART)
             {
-                transform.Rotate(new Vector3(0, 0, 0.4f));
+                transform.Rotate(new Vector3(0, 0, Time.fixedDeltaTime * 4));
             }
         }
     }
