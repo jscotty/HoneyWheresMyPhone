@@ -31,7 +31,7 @@ public class Scrolling : MonoBehaviour
 
     private void Start()
     {
-        if (PlayerPrefs.GetInt("HeadStartUpgrade") > 0)
+        if (PlayerPrefs.GetInt("StartDepth") > 1)
         {
             _gameData.direction = Direction.HEADSTART;
         }
@@ -74,15 +74,15 @@ public class Scrolling : MonoBehaviour
             break;
             case (Direction.DOWN):
                 transform.Translate(Vector2.up * _speed / 20 * Time.fixedDeltaTime * 10);
-                if(transform.position.y >= 200 + (200 * PlayerPrefs.GetInt("DepthUpgrade")))
+                if(transform.position.y >= 200 * (PlayerPrefs.GetInt("MaxDepth")))
                 {
                     _gameData.direction = Direction.UP;
                 }
             break;
             case (Direction.HEADSTART):
                 _headStartTime += Time.fixedDeltaTime;
-                int tHeadstartDepth = PlayerPrefs.GetInt("HeadStartUpgrade") * 50;
-                transform.position = Vector2.Lerp(_startPosition, Vector2.up * tHeadstartDepth, tHeadstartDepth);
+                int tHeadstartDepth = (PlayerPrefs.GetInt("StartDepth")-1) * 50;
+                transform.position = Vector2.Lerp(_startPosition, Vector2.up * tHeadstartDepth, _headStartTime);
                 if(_headStartTime >= 1)
                 {
                     _gameData.direction = Direction.DOWN;

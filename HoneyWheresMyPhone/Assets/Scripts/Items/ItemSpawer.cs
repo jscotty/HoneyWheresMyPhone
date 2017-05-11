@@ -25,6 +25,9 @@ public class ItemSpawer : Singleton<ItemSpawer>
    // private ProgressBar _progressBar;
     private ItemSpawer _itemSpawner;
 
+    private int _currentDepthCount = 1;
+    public int itemPerWave;
+
     private void Awake()
     {
         GameObject tGameobject = GameObject.FindGameObjectWithTag("GameData");
@@ -35,17 +38,33 @@ public class ItemSpawer : Singleton<ItemSpawer>
         tGameobject = GameObject.FindGameObjectWithTag("ItemSpawner");
         _itemSpawner = tGameobject.GetComponent<ItemSpawer>();
         _itemController = tGameobject.GetComponent<ItemController>();
+        if (itemPerWave == 0)
+        {
+            itemPerWave = 2;
+        }
     }
 
     private void Start()
     {
         SpawnEndItem();
-        StartCoroutine("ItemSpawnDelay");
+        //StartCoroutine("ItemSpawnDelay");
     }
 
     public void StopSpawningItems()
     {
         StopCoroutine("ItemSpawnDelay");
+    }
+
+    private void Update()
+    {
+        if (Mathf.RoundToInt(itemParent.position.y / 5) >= _currentDepthCount)
+        {
+            _currentDepthCount++;
+            for (int i = 0; i < itemPerWave; i++)
+            {
+                CreateRandomItemAtRandomPosition();
+            }
+        }
     }
 
     /// <summary>
@@ -123,11 +142,14 @@ public class ItemSpawer : Singleton<ItemSpawer>
     }
     */
 
+    /// <summary>
+    /// spawns the end item
+    /// </summary>
     public void SpawnEndItem()
     {
         Vector3 tSpawnPos = Vector3.Lerp(_leftBound.transform.position, _rightBound.transform.position, Random.Range(0f, 1f));
         tSpawnPos.z = 0;
-        tSpawnPos.y = -_gameData.endItemDepth;
+        tSpawnPos.y = -(_gameData.endItemDepth);
         GameObject tItem = Instantiate(endItem, tSpawnPos, Quaternion.identity);
         tItem.transform.SetParent(itemParent,true);
         Vector3 tSpawnLocalPos =    tItem.transform.localPosition;
@@ -136,12 +158,15 @@ public class ItemSpawer : Singleton<ItemSpawer>
         //_progressBar.EndItem = tItem.transform;
     }
 
+    /// <summary>
+    /// used for spawning the items on certain times
+    /// </summary>
     IEnumerator ItemSpawnDelay()
     {
         while (true)
         {
             yield return new WaitForSeconds(_itemSpawnDelay);
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < itemPerWave; i++)
             {
                 CreateRandomItemAtRandomPosition();
             } 

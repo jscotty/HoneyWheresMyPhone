@@ -1744,7 +1744,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _progressionText: {fileID: 1144504162}
-  _textBehindDepth: ' / 1200m'
+  _textBehindDepth: ' / 1000m'
   _movingObject: {fileID: 1948595061}
 --- !u!114 &1144504162
 MonoBehaviour:
@@ -1778,7 +1778,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 0 / 1200m
+  m_Text: 0 / 1000m
 --- !u!222 &1144504163
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3335,7 +3335,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abc616b1f5e2c864b976740e4e6e3569, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 3
+  _speed: 5
   _hand: {fileID: 2010265010}
   _desiredHandMovement: 3
   _endScreen: {fileID: 1796287562}

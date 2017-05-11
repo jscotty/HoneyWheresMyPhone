@@ -13,7 +13,7 @@ public class ScoreManager : Singleton<ScoreManager> {
         if(depthCurrentRound > PlayerPrefs.GetFloat("HighScore")) {
             PlayerPrefs.SetFloat("HighScore", depthCurrentRound);
         }
-        PlayerPrefs.SetFloat("MoneyTotal", PlayerPrefs.GetFloat("MoneyTotal") + scoreCurrentRound);
+        PlayerPrefs.SetFloat("MoneyTotal", PlayerPrefs.GetFloat("MoneyTotal") + (scoreCurrentRound * PlayerPrefs.GetInt("ItemValue")));
         scoreCurrentRound = 0;
         depthCurrentRound = 0;
     }

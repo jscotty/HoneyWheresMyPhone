@@ -39,7 +39,7 @@ public class BackgroundScroll : MonoBehaviour
                 _currentOffset.y -= Mathf.Repeat(Time.fixedDeltaTime * _scrollSpeed * 0.252f, 1);
             break;
             case Direction.HEADSTART:
-                _currentOffset.y -= Mathf.Repeat(Time.fixedDeltaTime * _scrollSpeed * 0.252f * 5 * PlayerPrefs.GetInt("HeadStartUpgrade"), 1);
+                _currentOffset.y -= Mathf.Repeat(Time.fixedDeltaTime * _scrollSpeed * 0.252f * 5 * PlayerPrefs.GetInt("StartDepth"), 1);
             break;
         }
         Vector2 offset = new Vector2(_currentOffset.x, _currentOffset.y);
