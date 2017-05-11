@@ -7,10 +7,14 @@ using UnityEngine;
 public class BackgroundScroll : MonoBehaviour
 {
 
-    [SerializeField] private float _scrollSpeed;
+    [SerializeField]
+    private float _scrollSpeed;
     private Vector2 _currentOffset;
-    [SerializeField] private Renderer _renderer;
+    [SerializeField]
+    private Renderer _renderer;
     private GameData _gameData;
+    [SerializeField]
+    private Scrolling _scrolling;
 
     private void Awake()
     {
@@ -33,10 +37,10 @@ public class BackgroundScroll : MonoBehaviour
     {
         switch (_gameData.direction) {
             case Direction.UP:
-                _currentOffset.y += Mathf.Repeat(Time.fixedDeltaTime * _scrollSpeed / 20 * 8 * Time.fixedDeltaTime * 10 * 1.57f, 1);
+                _currentOffset.y += Mathf.Repeat(Time.fixedDeltaTime * _scrollSpeed / 20 * 16 * Time.fixedDeltaTime * 10 * 1.57f, 1);
             break;
             case Direction.DOWN:
-                _currentOffset.y -= Mathf.Repeat(Time.fixedDeltaTime * _scrollSpeed / 20 * Time.fixedDeltaTime * 10 * 4.8f, 1);
+                _currentOffset.y -= Mathf.Repeat(Time.fixedDeltaTime * _scrollSpeed / 20 * Time.fixedDeltaTime * 10 * (_scrolling.percentage + 1) * 4.8f, 1);
             break;
             case Direction.HEADSTART:
                 _currentOffset.y -= Mathf.Repeat(Time.fixedDeltaTime * _scrollSpeed * 0.252f * 5 * PlayerPrefs.GetInt("StartDepth"), 1);
