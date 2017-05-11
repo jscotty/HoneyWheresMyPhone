@@ -26,16 +26,11 @@ public class Scrolling : MonoBehaviour
     private float _headStartTime;
 
     public float percentage { get; private set; }
-
+    
     private void Awake()
     {
         GameObject tGameobject = GameObject.FindGameObjectWithTag("GameData");
         _gameData = tGameobject.GetComponent<GameData>();
-        PlayerPrefs.SetInt("HeadStartUpgrade", 1);
-    }
-
-    private void Start()
-    {
         if (PlayerPrefs.GetInt("StartDepth") > 1)
         {
             _gameData.direction = Direction.HEADSTART;
