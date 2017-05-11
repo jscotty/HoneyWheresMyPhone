@@ -7,10 +7,13 @@ using UnityEngine;
 public class Scrolling : MonoBehaviour
 {
     
-    [SerializeField] private float _speed;
-    [SerializeField] private Transform _hand;
+    [SerializeField]
+    private float _speed;
+    [SerializeField]
+    private Transform _hand;
     private bool moveHand = true;
-    [SerializeField] private float _desiredHandMovement;
+    [SerializeField]
+    private float _desiredHandMovement;
     private Vector2 _startPosition;
 
     [SerializeField] private GameObject _endScreen;
@@ -21,6 +24,8 @@ public class Scrolling : MonoBehaviour
     private GameData _gameData;
 
     private float _headStartTime;
+
+    public float percentage { get; private set; }
 
     private void Awake()
     {
@@ -56,7 +61,7 @@ public class Scrolling : MonoBehaviour
                     ScoreManager.Instance.depthCurrentRound = transform.position.y;
                     setDepth = true;
                 }
-                transform.Translate(Vector2.down * _speed / 8 * Time.fixedDeltaTime * 10);
+                transform.Translate(Vector2.down * _speed / 4 * Time.fixedDeltaTime * 10);
                 if (transform.position.y <= _startPosition.y)
                 {
                     _gameData.direction = Direction.NONE;
@@ -73,7 +78,8 @@ public class Scrolling : MonoBehaviour
                 }
             break;
             case (Direction.DOWN):
-                transform.Translate(Vector2.up * _speed / 20 * Time.fixedDeltaTime * 10);
+                percentage = transform.position.y / 1000;
+                transform.Translate(Vector2.up * _speed / 20 * Time.fixedDeltaTime * (percentage + 1) * 10);
                 if(transform.position.y >= 200 * (PlayerPrefs.GetInt("MaxDepth")))
                 {
                     _gameData.direction = Direction.UP;

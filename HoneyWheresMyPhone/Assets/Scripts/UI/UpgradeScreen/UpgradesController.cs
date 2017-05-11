@@ -19,7 +19,6 @@ public class UpgradesController : MonoBehaviour {
     /// </summary>
     private void OnEnable()
     {
-    
         _upgradeTiers[0] = PlayerPrefs.GetInt("MaxDepth");
         _upgradeTiers[1] = PlayerPrefs.GetInt("StartDepth");
         _upgradeTiers[2] = PlayerPrefs.GetInt("ItemValue");
