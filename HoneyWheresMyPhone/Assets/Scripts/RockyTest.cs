@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class RockyTest : MonoBehaviour
 {
-
-
-    private void OnTriggerEnter(Collider other)
+    private void Awake()
     {
-        Debug.Log("TRIGGERED!!");
+        PlayerPrefs.SetInt("MaxDepth",1);
+        PlayerPrefs.SetInt("StartDepth",1);
+        PlayerPrefs.SetInt("ItemValue",1);
+        PlayerPrefs.SetFloat("MoneyTotal", 399);
     }
 }
