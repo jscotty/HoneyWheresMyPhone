@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Rotation : MonoBehaviour {
 
-    private float _rotationSpeed;
+    [SerializeField]
+    private float _rotationSpeed = 3;
     private GameData _gameData;
     private Transform _hand;
 
@@ -20,30 +21,30 @@ public class Rotation : MonoBehaviour {
         {
             if (_gameData.direction == Direction.DOWN)
             {
-                transform.Rotate(new Vector3(0, 0, -Time.fixedDeltaTime));
+                transform.Rotate(new Vector3(0, 0, -Time.fixedDeltaTime * _rotationSpeed));
             }
             else if (_gameData.direction == Direction.UP)
             {
-                transform.Rotate(new Vector3(0, 0, Time.fixedDeltaTime));
+                transform.Rotate(new Vector3(0, 0, Time.fixedDeltaTime * _rotationSpeed));
             }
             else if (_gameData.direction == Direction.HEADSTART)
             {
-                transform.Rotate(new Vector3(0, 0, -Time.fixedDeltaTime * 4));
+                transform.Rotate(new Vector3(0, 0, -Time.fixedDeltaTime * 4 * _rotationSpeed));
             }
         }
         else
         {
             if (_gameData.direction == Direction.DOWN)
             {
-                transform.Rotate(new Vector3(0, 0, Time.fixedDeltaTime));
+                transform.Rotate(new Vector3(0, 0, Time.fixedDeltaTime * _rotationSpeed));
             }
             else if (_gameData.direction == Direction.UP)
             {
-                transform.Rotate(new Vector3(0, 0, -Time.fixedDeltaTime));
+                transform.Rotate(new Vector3(0, 0, -Time.fixedDeltaTime * _rotationSpeed));
             }
             else if (_gameData.direction == Direction.HEADSTART)
             {
-                transform.Rotate(new Vector3(0, 0, Time.fixedDeltaTime * 4));
+                transform.Rotate(new Vector3(0, 0, Time.fixedDeltaTime * 4 * _rotationSpeed));
             }
         }
     }
