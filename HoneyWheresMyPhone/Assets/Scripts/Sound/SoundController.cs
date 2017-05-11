@@ -10,6 +10,7 @@ public class SoundController : Singleton<SoundController>
     private List<string> _currentSounds = new List<string>();
     private List<AudioSource> _currentAudioSources = new List<AudioSource>();
     private GameObject _soundObject;
+    public bool mayIPlaySound = true;
 
     void Awake()
     {
@@ -27,27 +28,30 @@ public class SoundController : Singleton<SoundController>
     /// <param name="iStringForDestroy">String to call the sound on if it needs to be destroyed</param>
     public void PlaySound(AudioClip iSound, float iVolume = 1, Transform iParentForSound = null, bool iRepeating = false, string iStringForDestroy = "", bool iDontDestroyOnLoad = false)
     {
-        AudioSource tAudioSource = Instantiate(_soundObject).GetComponent<AudioSource>();
-        if (iParentForSound != null)
+        if (mayIPlaySound)
         {
-            tAudioSource.transform.SetParent(iParentForSound);
-        }
-        tAudioSource.loop = iRepeating;
-        tAudioSource.clip = iSound;
-        tAudioSource.volume = iVolume;
-        tAudioSource.Play();
-        if (!iRepeating)
-        {
-            StartCoroutine(DestroyAFterDone(tAudioSource));
-        }
-        else
-        {
-            _currentSounds.Add(iStringForDestroy);
-            _currentAudioSources.Add(tAudioSource);
-        }
-        if (iDontDestroyOnLoad)
-        {
-            DontDestroyOnLoad(tAudioSource.gameObject);
+            AudioSource tAudioSource = Instantiate(_soundObject).GetComponent<AudioSource>();
+            if (iParentForSound != null)
+            {
+                tAudioSource.transform.SetParent(iParentForSound);
+            }
+            tAudioSource.loop = iRepeating;
+            tAudioSource.clip = iSound;
+            tAudioSource.volume = iVolume;
+            tAudioSource.Play();
+            if (!iRepeating)
+            {
+                StartCoroutine(DestroyAFterDone(tAudioSource));
+            }
+            else
+            {
+                _currentSounds.Add(iStringForDestroy);
+                _currentAudioSources.Add(tAudioSource);
+            }
+            if (iDontDestroyOnLoad)
+            {
+                DontDestroyOnLoad(tAudioSource.gameObject);
+            }
         }
     }
 
