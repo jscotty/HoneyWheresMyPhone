@@ -31,7 +31,7 @@ public class InputMovement : MonoBehaviour
             {
                 tNewPos = Input.mousePosition.x;
             }
-            if (tNewPos != 0)
+            if (tNewPos != 0 && tNewPos > 0 && tNewPos < Screen.width)
             {
                 Vector2 tDesiredPosition = Vector2.zero;
                 tDesiredPosition.x = tNewPos;
