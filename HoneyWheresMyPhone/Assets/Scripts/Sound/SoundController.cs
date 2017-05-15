@@ -3,6 +3,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class SoundController : Singleton<SoundController>
 {
@@ -10,10 +11,37 @@ public class SoundController : Singleton<SoundController>
     private List<string> _currentSounds = new List<string>();
     private List<AudioSource> _currentAudioSources = new List<AudioSource>();
     private GameObject _soundObject;
-    public bool mayIPlaySound = true;
+    private bool _mayIPlaySound;
+    /// <summary>
+    /// public get and set on set also toggle the audio listener on or off
+    /// </summary>
+    public bool MayIPlaySound
+    {
+        get
+        {
+            return _mayIPlaySound;
+        }
+        set
+        {
+            _mayIPlaySound = value;
+            PlayerPrefs.SetInt("SoundEnabled", Convert.ToInt32(value));
+            PlayerPrefs.Save();
+            
+        }
+    }
+
 
     void Awake()
     {
+        if (PlayerPrefs.GetInt("SoundEnabled") == 0)
+        {
+            MayIPlaySound = false;
+
+        }
+        else
+        {
+            MayIPlaySound = true;
+        }
         _soundObject = new GameObject("soundObj");
         _soundObject.transform.SetParent(transform);
         _soundObject.AddComponent<AudioSource>();
@@ -28,7 +56,7 @@ public class SoundController : Singleton<SoundController>
     /// <param name="iStringForDestroy">String to call the sound on if it needs to be destroyed</param>
     public void PlaySound(AudioClip iSound, float iVolume = 1, Transform iParentForSound = null, bool iRepeating = false, string iStringForDestroy = "", bool iDontDestroyOnLoad = false)
     {
-        if (mayIPlaySound)
+        if (MayIPlaySound)
         {
             AudioSource tAudioSource = Instantiate(_soundObject).GetComponent<AudioSource>();
             if (iParentForSound != null)

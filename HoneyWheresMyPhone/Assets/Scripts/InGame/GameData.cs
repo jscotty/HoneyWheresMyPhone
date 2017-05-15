@@ -5,6 +5,10 @@ using UnityEngine;
 public class GameData : MonoBehaviour
 {
     public Direction direction;
+
+    /// <summary>
+    /// returns the endItemDepth
+    /// </summary>
     public float endItemDepth
     {
         get

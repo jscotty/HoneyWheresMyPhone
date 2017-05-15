@@ -5,6 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class PauzeMenu : MonoBehaviour {
 
+    /// <summary>
+    /// Pauses th game and shows the pause menu
+    /// </summary>
+    /// <param name="iPauzeMenu"></param>
 	public void OnButtonPressed(GameObject iPauzeMenu)
     {
         if (iPauzeMenu.activeInHierarchy)
@@ -18,6 +22,10 @@ public class PauzeMenu : MonoBehaviour {
             Time.timeScale = 0;
         }
     }
+
+    /// <summary>
+    /// loads the main menu scene
+    /// </summary>
     public void BackToMenu()
     {
         SceneManager.LoadScene(0);

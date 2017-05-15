@@ -28,6 +28,9 @@ public class ItemSpawer : Singleton<ItemSpawer>
     private int _currentDepthCount = 1;
     public int itemPerWave;
 
+    /// <summary>
+    /// Sets the needed refereces.
+    /// </summary>
     private void Awake()
     {
         GameObject tGameobject = GameObject.FindGameObjectWithTag("GameData");
@@ -44,17 +47,26 @@ public class ItemSpawer : Singleton<ItemSpawer>
         }
     }
 
+    /// <summary>
+    /// spawns the end item
+    /// </summary>
     private void Start()
     {
         SpawnEndItem();
         //StartCoroutine("ItemSpawnDelay");
     }
 
+    /// <summary>
+    /// stops spawning items
+    /// </summary>
     public void StopSpawningItems()
     {
         StopCoroutine("ItemSpawnDelay");
     }
 
+    /// <summary>
+    /// creates the items according to the depth of the itemparent
+    /// </summary>
     private void Update()
     {
         if (Mathf.RoundToInt(itemParent.position.y / 5) >= _currentDepthCount)

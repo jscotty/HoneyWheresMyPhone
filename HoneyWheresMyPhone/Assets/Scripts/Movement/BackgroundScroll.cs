@@ -16,6 +16,9 @@ public class BackgroundScroll : MonoBehaviour
     [SerializeField]
     private Scrolling _scrolling;
 
+    /// <summary>
+    /// sets the needed references
+    /// </summary>
     private void Awake()
     {
         GameObject tGameobject = GameObject.FindGameObjectWithTag("GameData");

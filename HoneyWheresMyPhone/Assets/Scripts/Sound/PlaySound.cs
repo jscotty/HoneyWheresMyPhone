@@ -18,6 +18,9 @@ public class PlaySound : MonoBehaviour
     [SerializeField]
     private bool _checkIfPlaying;
 
+    /// <summary>
+    /// starts the background music
+    /// </summary>
     void Start()
     {
         if (!_checkIfPlaying || !SoundController.Instance.IsPlaying(_stringForSound))

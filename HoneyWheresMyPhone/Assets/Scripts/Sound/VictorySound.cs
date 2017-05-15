@@ -8,12 +8,19 @@ public class VictorySound : MonoBehaviour {
     [SerializeField] private AudioClip _victoryMusic2;
     [SerializeField] private AudioClip _backgroundMusic;
 
+    /// <summary>
+    /// Starts the victory sound.
+    /// </summary>
     void Start () {
         transform.SetParent(null);
         DontDestroyOnLoad(gameObject);
         StartCoroutine(PlayMusic());
 	}
     
+    /// <summary>
+    /// plays the victory sound and starts the the background music after the victory sound is done
+    /// </summary>
+    /// <returns></returns>
     private IEnumerator PlayMusic()
     {
         SoundController.Instance.DestroyAudioSource("BGMusic");
