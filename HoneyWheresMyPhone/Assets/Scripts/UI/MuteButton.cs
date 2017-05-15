@@ -6,9 +6,9 @@ using UnityEngine.UI;
 public class MuteButton : MonoBehaviour {
 
     [SerializeField]
-    private Sprite _idleEabled;
+    private Sprite _idleEnabled;
     [SerializeField]
-    private Sprite _clickedEabled;
+    private Sprite _clickedEnabled;
     [SerializeField]
     private Sprite _idleDisabled;
     [SerializeField]
@@ -33,7 +33,7 @@ public class MuteButton : MonoBehaviour {
             _soundController = SoundController.Instance;
         }
         sprStateMuted.pressedSprite = _clickedDisabled;
-        sprStateNotMuted.pressedSprite = _clickedEabled;
+        sprStateNotMuted.pressedSprite = _clickedEnabled;
         UpdateVisual();
        
     }
@@ -56,7 +56,7 @@ public class MuteButton : MonoBehaviour {
         if (_soundController.MayIPlaySound == true)
         {
             _myButton.spriteState = sprStateNotMuted;
-            _myImage.sprite = _idleEabled;
+            _myImage.sprite = _idleEnabled;
         }
         else
         {

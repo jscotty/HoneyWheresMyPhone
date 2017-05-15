@@ -91,8 +91,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bfe90f3b6d77dc4a95c93b4228ff444, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _idleEabled: {fileID: 21300016, guid: 5a9f26595f1a7d24f876a5ee611a2107, type: 3}
-  _clickedEabled: {fileID: 21300014, guid: 5a9f26595f1a7d24f876a5ee611a2107, type: 3}
+  _idleEnabled: {fileID: 21300016, guid: 5a9f26595f1a7d24f876a5ee611a2107, type: 3}
+  _clickedEnabled: {fileID: 21300014, guid: 5a9f26595f1a7d24f876a5ee611a2107, type: 3}
   _idleDisabled: {fileID: 21300012, guid: 5a9f26595f1a7d24f876a5ee611a2107, type: 3}
   _clickedDisabled: {fileID: 21300010, guid: 5a9f26595f1a7d24f876a5ee611a2107, type: 3}
   _soundClip: {fileID: 8300000, guid: 38652b59dda4c8d4f8061880ca5e3ae6, type: 3}
