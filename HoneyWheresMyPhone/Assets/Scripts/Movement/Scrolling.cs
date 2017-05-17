@@ -11,7 +11,7 @@ public class Scrolling : MonoBehaviour
     private float _speed;
     [SerializeField]
     private Transform _hand;
-    private bool moveHand = true;
+    private bool moveHand = false;
     [SerializeField]
     private float _desiredHandMovement;
     private Vector2 _startPosition;
@@ -29,16 +29,7 @@ public class Scrolling : MonoBehaviour
     
     private void Awake()
     {
-        GameObject tGameobject = GameObject.FindGameObjectWithTag("GameData");
-        _gameData = tGameobject.GetComponent<GameData>();
-        if (PlayerPrefs.GetInt("StartDepth") > 1)
-        {
-            _gameData.direction = Direction.HEADSTART;
-        }
-        else
-        {
-            _gameData.direction = Direction.DOWN;
-        }
+        _gameData = GameObject.FindGameObjectWithTag("GameData").GetComponent<GameData>();
         _desiredHandYPosition = _hand.transform.position.y - _desiredHandMovement;
         _startPosition = (Vector2)transform.position;
     }
@@ -51,6 +42,7 @@ public class Scrolling : MonoBehaviour
         switch (_gameData.direction)
         {
             case Direction.UP:
+                percentage = transform.position.y / 1000;
                 if (!setDepth)
                 {
                     ScoreManager.Instance.depthCurrentRound = transform.position.y;
@@ -62,32 +54,33 @@ public class Scrolling : MonoBehaviour
                     _gameData.direction = Direction.NONE;
                     _endScreen.SetActive(true);
                 }
-                if (moveHand)
-                {
-                    _hand.Translate(Vector2.down * _speed / 10 * Time.fixedDeltaTime);
-                    if (_hand.position.y <= _desiredHandYPosition)
-                    {
-                        _hand.position = new Vector2(0, _desiredHandYPosition);
-                        moveHand = false;
-                    }
-                }
             break;
             case (Direction.DOWN):
                 percentage = transform.position.y / 1000;
                 transform.Translate(Vector2.up * _speed / 20 * Time.fixedDeltaTime * (percentage + 1) * 10);
                 if(transform.position.y >= 200 * (PlayerPrefs.GetInt("MaxDepth")))
                 {
-                    _gameData.direction = Direction.UP;
+                    moveHand = true;
+                    _gameData.direction = Direction.NONE;
                 }
             break;
             case (Direction.HEADSTART):
+                percentage = transform.position.y / 1000;
                 _headStartTime += Time.fixedDeltaTime;
                 int tHeadstartDepth = (PlayerPrefs.GetInt("StartDepth")-1) * 50;
                 transform.position = Vector2.Lerp(_startPosition, Vector2.up * tHeadstartDepth, _headStartTime);
-                if(_headStartTime >= 1)
+            break;
+            case (Direction.NONE):
+            if (moveHand)
+            {
+                _hand.Translate(Vector2.down * _speed / 4 * Time.fixedDeltaTime);
+                if (_hand.position.y <= _desiredHandYPosition)
                 {
-                    _gameData.direction = Direction.DOWN;
+                    _hand.position = new Vector2(0, _desiredHandYPosition);
+                    _gameData.direction = Direction.UP;
+                    moveHand = false;
                 }
+            }
             break;
         }
     }

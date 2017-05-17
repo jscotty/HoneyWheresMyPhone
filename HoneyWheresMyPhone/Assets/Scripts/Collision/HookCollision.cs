@@ -16,13 +16,14 @@ public class HookCollision : MonoBehaviour
     private ItemSpawer _itemSpawner;
     public static Transform handTransform;
 
-    private bool _invulnerable = false;
+    private Collider2D _collider;
 
     /// <summary>
     /// Sets variables
     /// </summary>
     private void Awake()
     {
+        _collider = GetComponent<Collider2D>();
         handTransform = transform;
         GameObject tGameobject = GameObject.FindGameObjectWithTag("GameData");
         _gameData = tGameobject.GetComponent<GameData>();
@@ -35,17 +36,18 @@ public class HookCollision : MonoBehaviour
 
     private void Start()
     {
-        if (_gameData.direction == Direction.HEADSTART)
-        {
-            _invulnerable = true;
-            StartCoroutine(invincDelay());
-        }
+        _collider.enabled = false;
+        StartCoroutine(invincDelay());
     }
 
     IEnumerator invincDelay()
     {
-        yield return new WaitForSeconds(2);
-        _invulnerable = false;
+        while(_gameData.direction == Direction.NONE)
+        {
+            yield return new WaitForEndOfFrame();
+        }
+        yield return new WaitForSeconds(5);
+        _collider.enabled = true;
         yield break;
     }
 
@@ -55,7 +57,7 @@ public class HookCollision : MonoBehaviour
     /// <param name="collision"></param>
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (_gameData.direction != Direction.HEADSTART && collision.gameObject.CompareTag(_itemTag) && !_invulnerable)
+        if (_gameData.direction != Direction.HEADSTART && collision.gameObject.CompareTag(_itemTag))
         {
             if (_gameData.direction == Direction.DOWN)
             {
