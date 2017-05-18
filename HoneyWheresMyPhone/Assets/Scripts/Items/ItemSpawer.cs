@@ -8,7 +8,9 @@ public class ItemSpawer : Singleton<ItemSpawer>
     private float _topSpawnY;
     [SerializeField]
     private float _botSpawnY;
-    public List<GameObject> itemList;
+    public List<GameObject> itemsTierOne;
+    public List<GameObject> itemsTierTwo;
+    public List<GameObject> itemsTierThree;
     [SerializeField]
     private GameObject endItem; // nce we get more end items this has to be turned into a list
     public Transform itemParent;
@@ -25,7 +27,7 @@ public class ItemSpawer : Singleton<ItemSpawer>
    // private ProgressBar _progressBar;
     private ItemSpawer _itemSpawner;
 
-    private int _currentDepthCount = 1;
+    private int _currentDepthCount = 3;
     public int itemPerWave;
 
     /// <summary>
@@ -87,7 +89,7 @@ public class ItemSpawer : Singleton<ItemSpawer>
     public void CreateRandomItemAtRandomPosition()
     {
         Vector3 tSpawnPos = Vector3.Lerp(_leftBound.transform.position,_rightBound.transform.position,Random.Range(0f,1f));
-        int tRandomItemindex = Random.Range(0, itemList.Count);
+        int tRandomItemindex = Random.Range(0, itemsTierOne.Count);
         tSpawnPos.z = 0;
         switch (_gameData.direction)
         {
@@ -98,7 +100,19 @@ public class ItemSpawer : Singleton<ItemSpawer>
                 tSpawnPos.y = _botSpawnY;
                 break;
         }
-        GameObject tItem = Instantiate(itemList[tRandomItemindex], tSpawnPos, Quaternion.identity, itemParent);
+        GameObject tItem;
+        if (itemParent.transform.position.y < 333f)
+        {
+            tItem = Instantiate(itemsTierOne[tRandomItemindex], new Vector3(0, _topSpawnY, 0), Quaternion.identity, itemParent);
+        }
+        else if (itemParent.transform.position.y < 666f)
+        {
+            tItem = Instantiate(itemsTierTwo[tRandomItemindex], new Vector3(0, _topSpawnY, 0), Quaternion.identity, itemParent);
+        }
+        else
+        {
+            tItem = Instantiate(itemsTierThree[tRandomItemindex], new Vector3(0, _topSpawnY, 0), Quaternion.identity, itemParent);
+        }
         ItemBase tItemScript = tItem.GetComponent<ItemBase>();
         tItemScript.itemIndexForSpawning = tRandomItemindex;
         _itemController.AddItemToList(tItem.GetComponent<ItemBase>());
@@ -138,7 +152,19 @@ public class ItemSpawer : Singleton<ItemSpawer>
     /// <param name="iItemSpawnIndex">the index of the item to spawn from the itemlist</param>
     public void CreateItemAtFixedLocalPosition(Vector3 iLocalPosition, int iItemSpawnIndex)
     {
-        GameObject tItem = Instantiate(itemList[iItemSpawnIndex], new Vector3(0, _topSpawnY, 0), Quaternion.identity, itemParent);
+        GameObject tItem;
+        if (itemParent.transform.position.y < 333f)
+        {
+            tItem = Instantiate(itemsTierOne[iItemSpawnIndex], new Vector3(0, _topSpawnY, 0), Quaternion.identity, itemParent);
+        }
+        else if (itemParent.transform.position.y < 666f)
+        {
+            tItem = Instantiate(itemsTierTwo[iItemSpawnIndex], new Vector3(0, _topSpawnY, 0), Quaternion.identity, itemParent);
+        }
+        else
+        {
+            tItem = Instantiate(itemsTierThree[iItemSpawnIndex], new Vector3(0, _topSpawnY, 0), Quaternion.identity, itemParent);
+        }
         tItem.transform.localPosition = iLocalPosition;
         _itemController.AddItemToList(tItem.GetComponent<ItemBase>());
     }

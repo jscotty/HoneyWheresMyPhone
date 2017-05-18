@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 114360648554582856}
   - component: {fileID: 114004672865497834}
   - component: {fileID: 50317924651922428}
+  - component: {fileID: 114849466493221724}
   m_Layer: 0
   m_Name: TestSprite 7
   m_TagString: Item
@@ -125,6 +126,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d7032389027656d4d884b4fb4067909e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rotationSpeed: 3
+--- !u!114 &114849466493221724
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1400741121024310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 709b2aa914118da48b09362856bd273f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!212 &212508541377766518

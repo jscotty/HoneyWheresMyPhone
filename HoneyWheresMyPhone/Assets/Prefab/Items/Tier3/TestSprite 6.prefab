@@ -21,12 +21,13 @@ GameObject:
   - component: {fileID: 4094123189202308}
   - component: {fileID: 212508541377766518}
   - component: {fileID: 114293129598298582}
-  - component: {fileID: 61746525407944044}
-  - component: {fileID: 114780924580374794}
-  - component: {fileID: 114364185414332486}
-  - component: {fileID: 50429537200651792}
+  - component: {fileID: 61269587161901500}
+  - component: {fileID: 114200602830096020}
+  - component: {fileID: 114639743503705304}
+  - component: {fileID: 50380841550835342}
+  - component: {fileID: 114202001799803382}
   m_Layer: 0
-  m_Name: TestSprite 3
+  m_Name: TestSprite 6
   m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45,7 +46,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!50 &50429537200651792
+--- !u!50 &50380841550835342
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 1
@@ -65,7 +66,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!61 &61746525407944044
+--- !u!61 &61269587161901500
 BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -90,6 +91,29 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.81, y: 1.81}
   m_EdgeRadius: 0
+--- !u!114 &114200602830096020
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1400741121024310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7032389027656d4d884b4fb4067909e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rotationSpeed: 3
+--- !u!114 &114202001799803382
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1400741121024310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 709b2aa914118da48b09362856bd273f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114293129598298582
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -104,7 +128,7 @@ MonoBehaviour:
   _score: 1
   _endObject: 0
   itemIndexForSpawning: 0
---- !u!114 &114364185414332486
+--- !u!114 &114639743503705304
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -116,17 +140,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 1
---- !u!114 &114780924580374794
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1400741121024310}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7032389027656d4d884b4fb4067909e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!212 &212508541377766518
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -158,8 +171,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
-  m_Sprite: {fileID: 21300018, guid: 326a6b45a871c474e874ba2796aeefe2, type: 3}
+  m_SortingOrder: 3
+  m_Sprite: {fileID: 21300004, guid: 326a6b45a871c474e874ba2796aeefe2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
