@@ -36,7 +36,6 @@ public class MoveOutOfScreen : MonoBehaviour {
             _size -= 0.015f;
         }
         else {
-            Debug.Log("done");
             transform.position = DesiredPosition;
             transform.SetParent(HookCollision.handTransform);
             GetComponent<Renderer>().enabled = false;

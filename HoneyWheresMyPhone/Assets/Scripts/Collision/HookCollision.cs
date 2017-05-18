@@ -16,8 +16,6 @@ public class HookCollision : MonoBehaviour
     private ItemSpawer _itemSpawner;
     public static Transform handTransform;
 
-    private bool _invulnerable = false;
-
     /// <summary>
     /// Sets variables
     /// </summary>
@@ -33,29 +31,13 @@ public class HookCollision : MonoBehaviour
 #endif
     }
 
-    private void Start()
-    {
-        if (_gameData.direction == Direction.HEADSTART)
-        {
-            _invulnerable = true;
-            StartCoroutine(invincDelay());
-        }
-    }
-
-    IEnumerator invincDelay()
-    {
-        yield return new WaitForSeconds(2);
-        _invulnerable = false;
-        yield break;
-    }
-
     /// <summary>
     /// Triggers when an object is touched, if it is an item it will grab it and start moving up if it isn't already
     /// </summary>
     /// <param name="collision"></param>
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (_gameData.direction != Direction.HEADSTART && collision.gameObject.CompareTag(_itemTag) && !_invulnerable)
+        if (_gameData.direction != Direction.HEADSTART && collision.gameObject.CompareTag(_itemTag))
         {
             if (_gameData.direction == Direction.DOWN)
             {
