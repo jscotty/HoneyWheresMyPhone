@@ -21,12 +21,13 @@ GameObject:
   - component: {fileID: 4094123189202308}
   - component: {fileID: 212508541377766518}
   - component: {fileID: 114293129598298582}
-  - component: {fileID: 61882947682156944}
-  - component: {fileID: 114150215797262100}
-  - component: {fileID: 114350734965268332}
-  - component: {fileID: 50484462564341874}
+  - component: {fileID: 61269587161901500}
+  - component: {fileID: 114200602830096020}
+  - component: {fileID: 114639743503705304}
+  - component: {fileID: 50380841550835342}
+  - component: {fileID: 114202001799803382}
   m_Layer: 0
-  m_Name: TestSprite 8
+  m_Name: TestSprite
   m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45,7 +46,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!50 &50484462564341874
+--- !u!50 &50380841550835342
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 1
@@ -65,7 +66,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!61 &61882947682156944
+--- !u!61 &61269587161901500
 BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -81,7 +82,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.81, y: 1.81}
+    oldSize: {x: 1.28, y: 1.28}
     newSize: {x: 0.16, y: 0.16}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -90,7 +91,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.81, y: 1.81}
   m_EdgeRadius: 0
---- !u!114 &114150215797262100
+--- !u!114 &114200602830096020
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -102,6 +103,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rotationSpeed: 3
+--- !u!114 &114202001799803382
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1400741121024310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 709b2aa914118da48b09362856bd273f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114293129598298582
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -113,10 +125,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72c6da314de885445bd418a137c2b862, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _score: 1
+  _score: 6
   _endObject: 0
   itemIndexForSpawning: 0
---- !u!114 &114350734965268332
+--- !u!114 &114639743503705304
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -159,8 +171,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
-  m_Sprite: {fileID: 21300002, guid: 326a6b45a871c474e874ba2796aeefe2, type: 3}
+  m_SortingOrder: 1
+  m_Sprite: {fileID: 21300052, guid: 8f3cc1e7aa6a9354287167e0d995dc96, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

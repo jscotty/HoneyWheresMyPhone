@@ -103,15 +103,15 @@ public class ItemSpawer : Singleton<ItemSpawer>
         GameObject tItem;
         if (itemParent.transform.position.y < 333f)
         {
-            tItem = Instantiate(itemsTierOne[tRandomItemindex], new Vector3(0, _topSpawnY, 0), Quaternion.identity, itemParent);
+            tItem = Instantiate(itemsTierOne[tRandomItemindex], tSpawnPos, Quaternion.identity, itemParent);
         }
         else if (itemParent.transform.position.y < 666f)
         {
-            tItem = Instantiate(itemsTierTwo[tRandomItemindex], new Vector3(0, _topSpawnY, 0), Quaternion.identity, itemParent);
+            tItem = Instantiate(itemsTierTwo[tRandomItemindex], tSpawnPos, Quaternion.identity, itemParent);
         }
         else
         {
-            tItem = Instantiate(itemsTierThree[tRandomItemindex], new Vector3(0, _topSpawnY, 0), Quaternion.identity, itemParent);
+            tItem = Instantiate(itemsTierThree[tRandomItemindex], tSpawnPos, Quaternion.identity, itemParent);
         }
         ItemBase tItemScript = tItem.GetComponent<ItemBase>();
         tItemScript.itemIndexForSpawning = tRandomItemindex;
