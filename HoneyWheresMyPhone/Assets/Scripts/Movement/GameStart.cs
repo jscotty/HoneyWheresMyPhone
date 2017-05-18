@@ -18,8 +18,17 @@ public class GameStart : MonoBehaviour {
     [SerializeField]
     private Sprite _sprToChangeTo;
 
+    private Transform _hand;
+
+    [SerializeField]
+    private Vector2 _desiredHandPos;
+    private Vector2 _handStartPos;
+    private float _posTimer;
+
     private void Awake()
     {
+        _hand = HookCollision.handTransform.parent;
+        _handStartPos = _hand.position;
         _gameData = GameObject.FindGameObjectWithTag("GameData").GetComponent<GameData>();
         _gameData.direction = Direction.NONE;
     }
@@ -32,6 +41,7 @@ public class GameStart : MonoBehaviour {
             {
                 _started = true;
                 StartCoroutine(StartDelay());
+                _hand.GetChild(0).gameObject.GetComponent<Collider2D>().enabled = false;
                 if(PlayerPrefs.GetInt("StartDepth") > 1)
                 {
                     _gameData.direction = Direction.HEADSTART;
@@ -42,7 +52,17 @@ public class GameStart : MonoBehaviour {
                 }
             }
         }
-        else if (!_done)
+        else if (_done)
+        {
+            //Debug.Log("works " + Vector2.Lerp(_handStartPos, _desiredHandPos, _posTimer));
+            _posTimer += Time.deltaTime / 2;
+            Vector2 tLerpPos = Vector2.Lerp(_handStartPos, _desiredHandPos, _posTimer);
+            tLerpPos.x = _hand.position.x;
+            _hand.position = tLerpPos;
+
+            transform.Translate(Vector2.up * 3 / 20 * Time.deltaTime * 50);
+        }
+        else
         {
             transform.Translate(Vector2.up * 3 / 20 * Time.deltaTime * 50);
         }
@@ -52,9 +72,13 @@ public class GameStart : MonoBehaviour {
     {
         yield return new WaitForSeconds(2);
         StartGame();
-        yield return new WaitForSeconds(4);
+        yield return new WaitForSeconds(0.5f);
+        _done = true;
+        yield return new WaitForSeconds(3.5f);
         _sprRendToChange.sprite = _sprToChangeTo;
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(0.5f);
+        _hand.GetChild(0).gameObject.GetComponent<Collider2D>().enabled = true;
+        yield return new WaitForSeconds(1.5f);
         for (int i = 0; i < _toDisable.Length; i++)
         {
             _toDisable[i].SetActive(false);

@@ -16,14 +16,11 @@ public class HookCollision : MonoBehaviour
     private ItemSpawer _itemSpawner;
     public static Transform handTransform;
 
-    private Collider2D _collider;
-
     /// <summary>
     /// Sets variables
     /// </summary>
     private void Awake()
     {
-        _collider = GetComponent<Collider2D>();
         handTransform = transform;
         GameObject tGameobject = GameObject.FindGameObjectWithTag("GameData");
         _gameData = tGameobject.GetComponent<GameData>();
@@ -32,23 +29,6 @@ public class HookCollision : MonoBehaviour
 #if UNITY_EDITOR
         //Debug.Log("gamedata? " + _gameData);
 #endif
-    }
-
-    private void Start()
-    {
-        _collider.enabled = false;
-        StartCoroutine(invincDelay());
-    }
-
-    IEnumerator invincDelay()
-    {
-        while(_gameData.direction == Direction.NONE)
-        {
-            yield return new WaitForEndOfFrame();
-        }
-        yield return new WaitForSeconds(5);
-        _collider.enabled = true;
-        yield break;
     }
 
     /// <summary>
