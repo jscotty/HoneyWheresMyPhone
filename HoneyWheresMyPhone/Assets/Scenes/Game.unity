@@ -1165,7 +1165,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 9
+  m_SortingOrder: 20
   m_Sprite: {fileID: 21300000, guid: bf1cbd015ab25cd48965f5c14f37df9b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -2468,7 +2468,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 10
+  m_SortingOrder: 20
   m_Sprite: {fileID: 21300000, guid: faa6fc7423cd15d4da4e06d1bc3d75d7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -3029,6 +3029,7 @@ MonoBehaviour:
   - {fileID: 1385481892}
   _sprRendToChange: {fileID: 514671300}
   _sprToChangeTo: {fileID: 21300000, guid: faa6fc7423cd15d4da4e06d1bc3d75d7, type: 3}
+  _desiredHandPos: {x: 0, y: 4.78}
 --- !u!212 &1385481894
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4428,7 +4429,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.05882353, g: 0.011764706, b: 0.043137256, a: 1}
+  m_BackGroundColor: {r: 0.0627451, g: 0.011764707, b: 0.043137256, a: 1}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -4804,7 +4805,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2010265007}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 4.78, z: -0.51}
+  m_LocalPosition: {x: 0, y: 10, z: -0.51}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 953141700}
