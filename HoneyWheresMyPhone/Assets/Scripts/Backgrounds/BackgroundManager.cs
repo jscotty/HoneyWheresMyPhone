@@ -112,7 +112,7 @@ public class BackgroundManager : MonoBehaviour {
                                 }
                                 break;
                                 case 5:
-                                if (_scrolling.percentage > 0.985f)
+                                if (_scrolling.percentage > 0.99f)
                                 {
                                     _currentForegroundSprite++;
                                     _backgroundrenderers[i].sprite = _foregroundSprites[_currentForegroundSprite];

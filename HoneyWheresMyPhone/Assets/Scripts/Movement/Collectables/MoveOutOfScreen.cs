@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MoveOutOfScreen : MonoBehaviour {
     
@@ -8,6 +9,8 @@ public class MoveOutOfScreen : MonoBehaviour {
     private float _speed = 1;
     private Vector3 DesiredPosition = new Vector2(-3.5f, 9.5f);
     private float _size = 1;
+
+    private int _score;
 
     /// <summary>
     /// Disables other movement scripts
@@ -20,6 +23,11 @@ public class MoveOutOfScreen : MonoBehaviour {
             scripts[i].enabled = false;
         }
         this.enabled = true;
+        transform.rotation = Quaternion.Euler(0,0,0);
+        gameObject.GetComponent<SpriteRenderer>().enabled = false;
+        Text tText = gameObject.GetComponentInChildren<Text>();
+        _score = GetComponent<ItemBase>().Score() * PlayerPrefs.GetInt("ItemValue");
+        tText.text = "+" + _score;
     }
 
     /// <summary>
@@ -38,8 +46,8 @@ public class MoveOutOfScreen : MonoBehaviour {
         else {
             transform.position = DesiredPosition;
             transform.SetParent(HookCollision.handTransform);
-            GetComponent<Renderer>().enabled = false;
-            this.enabled = false;
+            MoneyCollectedUI.instance.AddScore(_score);
+            gameObject.SetActive(false);
         }
     }
 }
