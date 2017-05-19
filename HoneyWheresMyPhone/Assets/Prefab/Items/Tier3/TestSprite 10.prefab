@@ -21,11 +21,11 @@ GameObject:
   - component: {fileID: 4094123189202308}
   - component: {fileID: 212508541377766518}
   - component: {fileID: 114293129598298582}
-  - component: {fileID: 61269587161901500}
   - component: {fileID: 114200602830096020}
   - component: {fileID: 114639743503705304}
   - component: {fileID: 50380841550835342}
   - component: {fileID: 114202001799803382}
+  - component: {fileID: 60967618817935184}
   m_Layer: 0
   m_Name: TestSprite 10
   m_TagString: Item
@@ -66,8 +66,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!61 &61269587161901500
-BoxCollider2D:
+--- !u!60 &60967618817935184
+PolygonCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -88,9 +88,17 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1.81, y: 1.81}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.39999998, y: 0.59}
+      - {x: -0.58, y: 0.5}
+      - {x: -0.58, y: 0.26}
+      - {x: 0.26999998, y: -0.59}
+      - {x: 0.39, y: -0.59}
+      - {x: 0.58, y: -0.47}
+      - {x: 0.59, y: -0.45}
+      - {x: 0.59, y: -0.24}
+      - {x: -0.099999994, y: 0.59}
 --- !u!114 &114200602830096020
 MonoBehaviour:
   m_ObjectHideFlags: 1

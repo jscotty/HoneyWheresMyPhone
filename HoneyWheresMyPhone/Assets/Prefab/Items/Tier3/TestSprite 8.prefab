@@ -21,10 +21,10 @@ GameObject:
   - component: {fileID: 4094123189202308}
   - component: {fileID: 212508541377766518}
   - component: {fileID: 114293129598298582}
-  - component: {fileID: 61882947682156944}
   - component: {fileID: 114150215797262100}
   - component: {fileID: 114350734965268332}
   - component: {fileID: 50484462564341874}
+  - component: {fileID: 60827928061588638}
   m_Layer: 0
   m_Name: TestSprite 8
   m_TagString: Item
@@ -65,8 +65,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!61 &61882947682156944
-BoxCollider2D:
+--- !u!60 &60827928061588638
+PolygonCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -87,9 +87,32 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1.81, y: 1.81}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.17, y: -0.56}
+      - {x: 0.39, y: -0.59}
+      - {x: 0.53999996, y: -0.48999998}
+      - {x: 0.51, y: -0.29999998}
+      - {x: 0.57, y: -0.13}
+      - {x: 0.59999996, y: 0.02}
+      - {x: 0.59999996, y: 0.17999999}
+      - {x: 0.47, y: 0.26}
+      - {x: 0.26999998, y: 0.39}
+      - {x: 0.13, y: 0.52}
+      - {x: 0.01, y: 0.59}
+      - {x: -0.21, y: 0.59}
+      - {x: -0.39, y: 0.42999998}
+      - {x: -0.53, y: 0.28}
+      - {x: -0.59, y: 0.14}
+      - {x: -0.59, y: -0.06}
+      - {x: -0.53999996, y: -0.19}
+      - {x: -0.32, y: -0.55}
+      - {x: -0.29, y: -0.58}
+      - {x: -0.26, y: -0.59999996}
+      - {x: -0.13, y: -0.59999996}
+      - {x: -0.07, y: -0.55}
+      - {x: 0.02, y: -0.53999996}
+      - {x: 0.13, y: -0.57}
 --- !u!114 &114150215797262100
 MonoBehaviour:
   m_ObjectHideFlags: 1

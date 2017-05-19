@@ -21,11 +21,11 @@ GameObject:
   - component: {fileID: 4094123189202308}
   - component: {fileID: 212508541377766518}
   - component: {fileID: 114293129598298582}
-  - component: {fileID: 61746525407944044}
   - component: {fileID: 114780924580374794}
   - component: {fileID: 114364185414332486}
   - component: {fileID: 50429537200651792}
   - component: {fileID: 114018454554785058}
+  - component: {fileID: 60710582096530016}
   m_Layer: 0
   m_Name: TestSprite 6
   m_TagString: Item
@@ -40,7 +40,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1400741121024310}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.234, y: -6, z: 0}
+  m_LocalPosition: {x: -12.06, y: -6, z: 0}
   m_LocalScale: {x: 0.7, y: 0.7, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -66,8 +66,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!61 &61746525407944044
-BoxCollider2D:
+--- !u!60 &60710582096530016
+PolygonCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -88,9 +88,31 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1.81, y: 1.81}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.45, y: -0.34}
+      - {x: 0.41, y: -0.07}
+      - {x: 0.39999998, y: 0.02}
+      - {x: 0.38, y: 0.17}
+      - {x: 0.37, y: 0.28}
+      - {x: 0.34, y: 0.57}
+      - {x: 0.26999998, y: 0.62}
+      - {x: 0.089999996, y: 0.62}
+      - {x: 0.02, y: 0.59999996}
+      - {x: -0.11, y: 0.56}
+      - {x: -0.25, y: 0.53}
+      - {x: -0.41, y: 0.47}
+      - {x: -0.45, y: 0.42999998}
+      - {x: -0.45, y: 0.29999998}
+      - {x: -0.39, y: -0.089999996}
+      - {x: -0.37, y: -0.26999998}
+      - {x: -0.34, y: -0.5}
+      - {x: -0.31, y: -0.55}
+      - {x: -0.17, y: -0.63}
+      - {x: -0.06, y: -0.63}
+      - {x: 0.08, y: -0.58}
+      - {x: 0.38, y: -0.48999998}
+      - {x: 0.45, y: -0.42999998}
 --- !u!114 &114018454554785058
 MonoBehaviour:
   m_ObjectHideFlags: 1
