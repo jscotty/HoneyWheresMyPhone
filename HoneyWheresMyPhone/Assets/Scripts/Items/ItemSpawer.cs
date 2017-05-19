@@ -12,7 +12,7 @@ public class ItemSpawer : Singleton<ItemSpawer>
     public List<GameObject> itemsTierTwo;
     public List<GameObject> itemsTierThree;
     [SerializeField]
-    private GameObject endItem; // nce we get more end items this has to be turned into a list
+    private GameObject[] endItems; // nce we get more end items this has to be turned into a list
     public Transform itemParent;
     [SerializeField]
     private Transform _leftBound;
@@ -185,14 +185,18 @@ public class ItemSpawer : Singleton<ItemSpawer>
     /// </summary>
     public void SpawnEndItem()
     {
-        Vector3 tSpawnPos = Vector3.Lerp(_leftBound.transform.position, _rightBound.transform.position, Random.Range(0f, 1f));
-        tSpawnPos.z = 0;
-        tSpawnPos.y = -(_gameData.endItemDepth);
-        GameObject tItem = Instantiate(endItem, tSpawnPos, Quaternion.identity);
-        tItem.transform.SetParent(itemParent,true);
-        Vector3 tSpawnLocalPos =    tItem.transform.localPosition;
-        tSpawnLocalPos.y = -_gameData.endItemDepth;
-        tItem.transform.localPosition = tSpawnLocalPos;
+        Vector3 tSpawnPos;
+        for (int i = 0; i < endItems.Length; i++)
+        {
+            tSpawnPos = new Vector3();
+            tSpawnPos = Vector3.Lerp(_leftBound.transform.position, _rightBound.transform.position, Random.Range(0f, 1f));
+            tSpawnPos.z = 0;
+            GameObject tItem = Instantiate(endItems[i], tSpawnPos, Quaternion.identity);
+            tItem.transform.SetParent(itemParent, true);
+            Vector3 tSpawnLocalPos = tItem.transform.localPosition;
+            tSpawnLocalPos.y = -198 - 200 * i;
+            tItem.transform.localPosition = tSpawnLocalPos;
+        }
         //_progressBar.EndItem = tItem.transform;
     }
 
