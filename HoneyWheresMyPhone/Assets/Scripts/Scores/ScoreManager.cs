@@ -6,7 +6,7 @@ public class ScoreManager : Singleton<ScoreManager> {
     
     public int scoreCurrentRound = 0;
     public float depthCurrentRound = 0;
-    public bool gainedEndObject = false;
+    public int gainedEndObject = 0;
 
     public void ResetScore()
     {
@@ -16,5 +16,6 @@ public class ScoreManager : Singleton<ScoreManager> {
         PlayerPrefs.SetFloat("MoneyTotal", PlayerPrefs.GetFloat("MoneyTotal") + (scoreCurrentRound * PlayerPrefs.GetInt("ItemValue")));
         scoreCurrentRound = 0;
         depthCurrentRound = 0;
+        gainedEndObject = 0;
     }
 }

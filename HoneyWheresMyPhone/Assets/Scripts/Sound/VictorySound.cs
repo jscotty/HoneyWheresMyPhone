@@ -19,7 +19,7 @@ public class VictorySound : MonoBehaviour
     private IEnumerator PlayMusic()
     {
         SoundController.Instance.DestroyAudioSource("BGMusic");
-        if (!ScoreManager.Instance.gainedEndObject)
+        if (ScoreManager.Instance.gainedEndObject>0)
         {
             SoundController.Instance.PlaySound(_victoryMusic1, 1, null, false, "", true);
             yield return new WaitForSeconds(_victoryMusic1.length);

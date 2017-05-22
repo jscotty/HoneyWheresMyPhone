@@ -186,8 +186,13 @@ public class ItemSpawer : Singleton<ItemSpawer>
     public void SpawnEndItem()
     {
         Vector3 tSpawnPos;
+        int tPhonesCollected = PlayerPrefs.GetInt("PhonesCollected");
         for (int i = 0; i < endItems.Length; i++)
         {
+            if (i<tPhonesCollected)
+            {
+                continue;
+            }
             tSpawnPos = new Vector3();
             tSpawnPos = Vector3.Lerp(_leftBound.transform.position, _rightBound.transform.position, Random.Range(0f, 1f));
             tSpawnPos.z = 0;

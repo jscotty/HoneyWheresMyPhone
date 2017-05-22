@@ -53,7 +53,7 @@ public class HookCollision : MonoBehaviour
             if (tItemScores.EndObject())
             {
                 SoundController.Instance.PlaySound(_collectEndSound);
-                ScoreManager.Instance.gainedEndObject = true;
+                ScoreManager.Instance.gainedEndObject++;
             }
             else
             {
