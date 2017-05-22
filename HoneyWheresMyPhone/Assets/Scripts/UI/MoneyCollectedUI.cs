@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class MoneyCollectedUI : MonoBehaviour {
 
-    public static MoneyCollectedUI instance;
+    public static MoneyCollectedUI Instance;
 
     private int _currentScore = 0;
     [SerializeField]
@@ -13,7 +13,7 @@ public class MoneyCollectedUI : MonoBehaviour {
 
     private void Awake()
     {
-        instance = this;
+        Instance = this;
     }
     private void OnEnable()
     {
