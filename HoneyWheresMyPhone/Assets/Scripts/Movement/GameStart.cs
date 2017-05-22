@@ -76,9 +76,10 @@ public class GameStart : MonoBehaviour {
         _done = true;
         yield return new WaitForSeconds(3.5f);
         _sprRendToChange.sprite = _sprToChangeTo;
+        TutorialScreens.Instance.ShowScreen(0);
         yield return new WaitForSeconds(0.5f);
         _hand.GetChild(0).gameObject.GetComponent<Collider2D>().enabled = true;
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(2.1f);
         for (int i = 0; i < _toDisable.Length; i++)
         {
             _toDisable[i].SetActive(false);

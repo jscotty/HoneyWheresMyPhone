@@ -46,7 +46,7 @@ public class MoveOutOfScreen : MonoBehaviour {
         else {
             transform.position = DesiredPosition;
             transform.SetParent(HookCollision.handTransform);
-            MoneyCollectedUI.instance.AddScore(_score);
+            MoneyCollectedUI.Instance.AddScore(_score);
             gameObject.SetActive(false);
         }
     }
