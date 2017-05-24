@@ -44,6 +44,7 @@ public class HookCollision : MonoBehaviour
                 _gameData.direction = Direction.UP;
                 _itemSpawner.StopSpawningItems();
                 TutorialScreens.Instance.ShowScreen(1);
+                GetComponent<Animator>().SetBool("GrabbedItem", true);
             }
             collision.gameObject.GetComponent<Collider2D>().enabled = false;
             collision.gameObject.transform.SetParent(null);
