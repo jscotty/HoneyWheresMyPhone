@@ -12,19 +12,16 @@ public class ItemSpawer : Singleton<ItemSpawer>
     public List<GameObject> itemsTierTwo;
     public List<GameObject> itemsTierThree;
     [SerializeField]
-    private GameObject[] endItems; // nce we get more end items this has to be turned into a list
+    private GameObject[] endItems;
     public Transform itemParent;
     [SerializeField]
     private Transform _leftBound;
     [SerializeField]
     private Transform _rightBound;
     private ItemController _itemController;
-    //[SerializeField]
-    //private List<WaveData> _waves;
     [SerializeField]
     private float _itemSpawnDelay;
     private GameData _gameData;
-   // private ProgressBar _progressBar;
     private ItemSpawer _itemSpawner;
 
     private int _currentDepthCount = 3;
@@ -54,8 +51,7 @@ public class ItemSpawer : Singleton<ItemSpawer>
     /// </summary>
     private void Start()
     {
-        SpawnEndItem();
-        //StartCoroutine("ItemSpawnDelay");
+        SpawnEndItems();
     }
 
     /// <summary>
@@ -118,7 +114,6 @@ public class ItemSpawer : Singleton<ItemSpawer>
         _itemController.AddItemToList(tItem.GetComponent<ItemBase>());
     }
 
-    //TODO create chunk spawener
 
     /// <summary>
     /// creates an item at a fixed world position in the itemparent  
@@ -169,7 +164,7 @@ public class ItemSpawer : Singleton<ItemSpawer>
         _itemController.AddItemToList(tItem.GetComponent<ItemBase>());
     }
 
-    /* //TODO finish this
+    /* this will be used if we implement fixed waves
     public void SpawnRandomWave()
     {
         int tWaveIndex = Random.Range(0, _waves.Count);
@@ -181,15 +176,16 @@ public class ItemSpawer : Singleton<ItemSpawer>
     */
 
     /// <summary>
-    /// spawns the end item
+    /// spawns the end items that are in ned of spawning
+    /// the end items that are already collected will not be respawned again except for the last one
     /// </summary>
-    public void SpawnEndItem()
+    public void SpawnEndItems()
     {
         Vector3 tSpawnPos;
         int tPhonesCollected = PlayerPrefs.GetInt("PhonesCollected");
         for (int i = 0; i < endItems.Length; i++)
         {
-            if (i<tPhonesCollected)
+            if (i<tPhonesCollected && i != endItems.Length-1)
             {
                 continue;
             }
@@ -202,11 +198,10 @@ public class ItemSpawer : Singleton<ItemSpawer>
             tSpawnLocalPos.y = -198 - 200 * i;
             tItem.transform.localPosition = tSpawnLocalPos;
         }
-        //_progressBar.EndItem = tItem.transform;
     }
 
     /// <summary>
-    /// used for spawning the items on certain times
+    /// used for spawning the items per set delay
     /// </summary>
     IEnumerator ItemSpawnDelay()
     {
@@ -220,7 +215,7 @@ public class ItemSpawer : Singleton<ItemSpawer>
         }
     }
 
-    /*
+    /* this will be used if we implement fixed waves
     [System.Serializable]
     struct WaveData
     {

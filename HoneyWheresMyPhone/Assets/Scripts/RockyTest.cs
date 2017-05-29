@@ -2,8 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// This is the class i use to quickly debug/test things
+/// </summary>
 public class RockyTest : MonoBehaviour
 {
+    /// <summary>
+    /// reset all the playerprefs to default values
+    /// </summary>
     private void Awake()
     {
         PlayerPrefs.SetInt("MaxDepth",5);

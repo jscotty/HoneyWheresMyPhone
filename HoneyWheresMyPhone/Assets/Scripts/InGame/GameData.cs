@@ -18,6 +18,9 @@ public class GameData : MonoBehaviour
     }
 }
 
+/// <summary>
+/// Enum with values that controlthe mvement of the game
+/// </summary>
 public enum Direction
 {
     UP,

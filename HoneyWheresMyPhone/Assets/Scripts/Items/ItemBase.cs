@@ -16,7 +16,7 @@ public class ItemBase : MonoBehaviour
     /// <summary>
     /// Returns the score of the item
     /// </summary>
-    /// <returns></returns>
+    /// <returns>an integer</returns>
     public int Score()
     {
         return _score;
@@ -25,7 +25,7 @@ public class ItemBase : MonoBehaviour
     /// <summary>
     /// Returns if the object is an end object
     /// </summary>
-    /// <returns></returns>
+    /// <returns>an boolean</returns>
     public bool EndObject()
     {
         return _endObject;
