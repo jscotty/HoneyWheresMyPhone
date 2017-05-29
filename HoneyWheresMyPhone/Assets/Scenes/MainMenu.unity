@@ -384,7 +384,6 @@ GameObject:
   - component: {fileID: 371137882}
   - component: {fileID: 371137881}
   - component: {fileID: 371137884}
-  - component: {fileID: 371137883}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -443,18 +442,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 371137879}
---- !u!114 &371137883
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 371137879}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26e6319e872e0b047b98ba3be02c18d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _animator: {fileID: 371137884}
 --- !u!95 &371137884
 Animator:
   serializedVersion: 3
@@ -464,7 +451,7 @@ Animator:
   m_GameObject: {fileID: 371137879}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7635e9975e7d9cb41ac95ede4ed0400c, type: 2}
+  m_Controller: {fileID: 9100000, guid: b9302c66f33f52e409b4b6b69f021668, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -649,18 +636,6 @@ GameObject:
   m_PrefabParentObject: {fileID: 1684196721249360, guid: 7c6111daa8c038143b76ca6d0730b811,
     type: 2}
   m_PrefabInternal: {fileID: 417864886}
---- !u!114 &417864888
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 417864887}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26e6319e872e0b047b98ba3be02c18d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _animator: {fileID: 417864889}
 --- !u!95 &417864889
 Animator:
   serializedVersion: 3
@@ -670,7 +645,7 @@ Animator:
   m_GameObject: {fileID: 417864887}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7635e9975e7d9cb41ac95ede4ed0400c, type: 2}
+  m_Controller: {fileID: 9100000, guid: b9302c66f33f52e409b4b6b69f021668, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1116,7 +1091,6 @@ GameObject:
   - component: {fileID: 1424212350}
   - component: {fileID: 1424212353}
   - component: {fileID: 1424212355}
-  - component: {fileID: 1424212354}
   m_Layer: 5
   m_Name: UpgradeButton
   m_TagString: Untagged
@@ -1253,18 +1227,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _onHover: {fileID: 8300000, guid: 4db73d8eea4c7294ca6ccf706aec6b50, type: 3}
   _onPress: {fileID: 8300000, guid: fe9acbb0471872148be7b04378865125, type: 3}
---- !u!114 &1424212354
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1424212348}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26e6319e872e0b047b98ba3be02c18d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _animator: {fileID: 1424212355}
 --- !u!95 &1424212355
 Animator:
   serializedVersion: 3
@@ -1274,7 +1236,7 @@ Animator:
   m_GameObject: {fileID: 1424212348}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7635e9975e7d9cb41ac95ede4ed0400c, type: 2}
+  m_Controller: {fileID: 9100000, guid: b9302c66f33f52e409b4b6b69f021668, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1295,7 +1257,6 @@ GameObject:
   - component: {fileID: 1474603586}
   - component: {fileID: 1474603589}
   - component: {fileID: 1474603591}
-  - component: {fileID: 1474603590}
   m_Layer: 5
   m_Name: StartGameButton
   m_TagString: Untagged
@@ -1432,18 +1393,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _onHover: {fileID: 8300000, guid: 4db73d8eea4c7294ca6ccf706aec6b50, type: 3}
   _onPress: {fileID: 8300000, guid: fe9acbb0471872148be7b04378865125, type: 3}
---- !u!114 &1474603590
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1474603584}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26e6319e872e0b047b98ba3be02c18d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _animator: {fileID: 1474603591}
 --- !u!95 &1474603591
 Animator:
   serializedVersion: 3
@@ -1453,7 +1402,7 @@ Animator:
   m_GameObject: {fileID: 1474603584}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7635e9975e7d9cb41ac95ede4ed0400c, type: 2}
+  m_Controller: {fileID: 9100000, guid: b9302c66f33f52e409b4b6b69f021668, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
