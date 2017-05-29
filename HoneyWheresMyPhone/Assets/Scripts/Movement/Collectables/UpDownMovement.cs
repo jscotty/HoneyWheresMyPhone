@@ -4,46 +4,44 @@ using UnityEngine;
 
 public class UpDownMovement : MonoBehaviour
 {
-
-
-    private float variableHeight;
-    private bool goingUp;
+    private float _variableHeight;
+    private bool _goingUp;
     // Use this for initialization
     void Start()
     {
         if (Random.Range(0,2) == 0)
         {
-            goingUp = true;
+            _goingUp = true;
         }
         else
         {
-            goingUp = false;
+            _goingUp = false;
         }
     }
 
     // movement looks better with a fixed update 
-    void FixedUpdate()
+    private void FixedUpdate()
     {
 
         Vector3 tPosition = transform.position;
-        if (goingUp)
+        if (_goingUp)
         {
-            variableHeight -= Time.deltaTime;
+            _variableHeight -= Time.deltaTime;
             tPosition.y -= Time.deltaTime / 2;
             transform.position = tPosition;
-            if (variableHeight <= -0.2f)
+            if (_variableHeight <= -0.2f)
             {
-                goingUp = false;
+                _goingUp = false;
             }
         }
         else
         {
-            variableHeight += Time.deltaTime;
+            _variableHeight += Time.deltaTime;
             tPosition.y += Time.deltaTime / 2;
             transform.position = tPosition;
-            if (variableHeight >= 0.2)
+            if (_variableHeight >= 0.2)
             {
-                goingUp = true;
+                _goingUp = true;
             }
         }
     }

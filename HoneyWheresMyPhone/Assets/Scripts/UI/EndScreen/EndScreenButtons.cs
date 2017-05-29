@@ -20,14 +20,4 @@ public class EndScreenButtons : MonoBehaviour {
     {
         SceneManager.LoadScene(0);
     }
-
-    /// <summary>
-    /// open the upgrade screen
-    /// </summary>
-    public void UpgradeMenu()
-    {
-        //SceneManager.LoadScene();
-        //TODO add upgrade menu scene number
-        Debug.Log("Add Upgrade menu scene number here");
-    }
 }

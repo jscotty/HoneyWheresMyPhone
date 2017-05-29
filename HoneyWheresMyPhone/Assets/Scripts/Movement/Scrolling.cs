@@ -11,13 +11,13 @@ public class Scrolling : MonoBehaviour
     private float _speed;
     [SerializeField]
     private Transform _hand;
-    private bool moveHand = false;
+    private bool _moveHand = false;
     [SerializeField]
     private float _desiredHandMovement;
     private Vector2 _startPosition;
 
     [SerializeField] private GameObject _endScreen;
-    private bool setDepth = false;
+    private bool _setDepth = false;
 
     private float _desiredHandYPosition;
 
@@ -43,10 +43,10 @@ public class Scrolling : MonoBehaviour
         {
             case Direction.UP:
                 percentage = transform.position.y / 1000;
-                if (!setDepth)
+                if (!_setDepth)
                 {
                     ScoreManager.Instance.depthCurrentRound = transform.position.y;
-                    setDepth = true;
+                    _setDepth = true;
                 }
                 transform.Translate(Vector2.down * _speed / 4 * Time.fixedDeltaTime * 10);
                 if (transform.position.y <= _startPosition.y)
@@ -60,7 +60,7 @@ public class Scrolling : MonoBehaviour
                 transform.Translate(Vector2.up * _speed / 20 * Time.fixedDeltaTime * (percentage + 1) * 10);
                 if(transform.position.y >= 200 * (PlayerPrefs.GetInt("MaxDepth")))
                 {
-                    moveHand = true;
+                _moveHand = true;
                     _gameData.direction = Direction.NONE;
                 }
             break;
@@ -71,14 +71,14 @@ public class Scrolling : MonoBehaviour
                 transform.position = Vector2.Lerp(_startPosition, Vector2.up * tHeadstartDepth, _headStartTime);
             break;
             case (Direction.NONE):
-            if (moveHand)
+            if (_moveHand)
             {
                 _hand.Translate(Vector2.down * _speed / 4 * Time.fixedDeltaTime);
                 if (_hand.position.y <= _desiredHandYPosition)
                 {
                     _hand.position = new Vector2(0, _desiredHandYPosition);
                     _gameData.direction = Direction.UP;
-                    moveHand = false;
+                    _moveHand = false;
                 }
             }
             break;

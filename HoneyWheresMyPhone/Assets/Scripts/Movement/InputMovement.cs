@@ -18,7 +18,7 @@ public class InputMovement : MonoBehaviour
     /// <summary>
     /// Moves the gameObject to the position of the mouse/touch position
     /// </summary>
-	void FixedUpdate()
+	private void FixedUpdate()
     {
         if (_gameData.direction != Direction.NONE)
         {

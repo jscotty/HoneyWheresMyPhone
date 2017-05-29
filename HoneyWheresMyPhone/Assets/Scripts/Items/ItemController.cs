@@ -7,7 +7,6 @@ public class ItemController : Singleton<ItemController>
     public Transform topBound;
     public Transform bottomBound;
     public List<ItemBase> itemList = new List<ItemBase>();
-    [SerializeField]//TODO remove this after debugging
     private List<ItemSpawnData> _itemPositionList = new List<ItemSpawnData>();
     [SerializeField]
     private bool _useDestroyLogic; //if this is true is the destroy/instantiae logic else use the disable/enable logic for the items

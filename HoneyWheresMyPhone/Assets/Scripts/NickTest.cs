@@ -4,15 +4,7 @@ using UnityEngine;
 
 public class NickTest : MonoBehaviour
 {
-
-    private void Start()
-    {
-        PlayerPrefs.SetInt("MaxDepth", 1);
-        PlayerPrefs.SetInt("StartDepth", 1);
-        PlayerPrefs.SetInt("ItemValue", 1);
-    }
-
-    /*private float speed = 1;
+    private float speed = 1;
     private float currentSpeed = 1;
 
     [SerializeField]
@@ -28,6 +20,10 @@ public class NickTest : MonoBehaviour
         {
             speed--;
         }
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            PlayerPrefs.SetFloat("MoneyTotal", PlayerPrefs.GetFloat("MoneyTotal") + 100);
+        }
         if (Input.GetKeyDown(KeyCode.Space))
         {
             if (_toEnable.activeInHierarchy)
@@ -39,6 +35,12 @@ public class NickTest : MonoBehaviour
                 _toEnable.SetActive(true);
             }
         }
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            PlayerPrefs.SetInt("MaxDepth", 1);
+            PlayerPrefs.SetInt("StartDepth", 1);
+            PlayerPrefs.SetInt("ItemValue", 1);
+        }
         if (speed < 0)
         {
             speed = 0;
@@ -48,5 +50,5 @@ public class NickTest : MonoBehaviour
             Time.timeScale = speed;
             currentSpeed = speed;
         }
-    }*/
+    }
 }

@@ -21,7 +21,7 @@ public class PlaySound : MonoBehaviour
     /// <summary>
     /// starts the background music
     /// </summary>
-    void Start()
+    private void Start()
     {
         if (!_checkIfPlaying || !SoundController.Instance.IsPlaying(_stringForSound))
         {
