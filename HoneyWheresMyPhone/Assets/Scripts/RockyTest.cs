@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// This is the class i use to quickly debug/test things
+/// This a class to quickly debug/test things
 /// </summary>
 public class RockyTest : MonoBehaviour
 {

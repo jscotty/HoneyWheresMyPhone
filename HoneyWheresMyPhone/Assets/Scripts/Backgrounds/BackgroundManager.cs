@@ -20,6 +20,9 @@ public class BackgroundManager : MonoBehaviour {
     private int _currentBackgroundSprite = 0;
     private int _currentForegroundSprite = 0;
 
+    /// <summary>
+    /// finds the needed references
+    /// </summary>
     private void Awake()
     {
         _gameData = GameObject.FindGameObjectWithTag("GameData").GetComponent<GameData>();
@@ -32,6 +35,9 @@ public class BackgroundManager : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// controls the background objects
+    /// </summary>
     private void FixedUpdate()
     {
         if(_gameData.direction == Direction.DOWN || _gameData.direction == Direction.HEADSTART)

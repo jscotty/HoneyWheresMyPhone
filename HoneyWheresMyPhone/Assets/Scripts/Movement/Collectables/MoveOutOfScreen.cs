@@ -13,7 +13,7 @@ public class MoveOutOfScreen : MonoBehaviour {
     private int _score;
 
     /// <summary>
-    /// Disables other movement scripts
+    /// Disables other scripts
     /// </summary>
     private void Start()
     {

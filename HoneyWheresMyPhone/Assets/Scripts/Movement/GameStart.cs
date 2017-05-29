@@ -25,6 +25,9 @@ public class GameStart : MonoBehaviour {
     private Vector2 _handStartPos;
     private float _posTimer;
 
+    /// <summary>
+    /// sets the needed references
+    /// </summary>
     private void Awake()
     {
         _hand = HookCollision.handTransform.parent;
@@ -32,6 +35,7 @@ public class GameStart : MonoBehaviour {
         _gameData = GameObject.FindGameObjectWithTag("GameData").GetComponent<GameData>();
         _gameData.direction = Direction.NONE;
     }
+
 
     private void Update()
     {

@@ -8,11 +8,17 @@ public class TowardsHand : MonoBehaviour {
     [SerializeField]
     private float _speed;
 
+    /// <summary>
+    /// finds and saves the hand transform
+    /// </summary>
     private void Start()
     {
         _hand = HookCollision.handTransform;
     }
 
+    /// <summary>
+    /// moves towards the hand transform
+    /// </summary>
     private void FixedUpdate()
     {
         if(Vector2.Distance(new Vector2(_hand.position.x, 0), new Vector2(transform.position.x, 0)) > _speed / 50)

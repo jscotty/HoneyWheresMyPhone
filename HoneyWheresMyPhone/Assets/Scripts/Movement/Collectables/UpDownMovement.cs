@@ -6,7 +6,9 @@ public class UpDownMovement : MonoBehaviour
 {
     private float _variableHeight;
     private bool _goingUp;
-    // Use this for initialization
+    /// <summary>
+    /// sets the start direction at random
+    /// </summary>
     void Start()
     {
         if (Random.Range(0,2) == 0)
@@ -19,7 +21,9 @@ public class UpDownMovement : MonoBehaviour
         }
     }
 
-    // movement looks better with a fixed update 
+    /// <summary>
+    /// moves the item up and down
+    /// </summary>
     private void FixedUpdate()
     {
 

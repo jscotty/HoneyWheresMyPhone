@@ -8,6 +8,9 @@ public class SimpleLeftRight : MonoBehaviour {
     private float _speed;
     private int _right;
 
+    /// <summary>
+    /// sets that starting direction
+    /// </summary>
     private void Start()
     {
         _right = Random.Range(0, 2);
@@ -17,12 +20,20 @@ public class SimpleLeftRight : MonoBehaviour {
         }
     }
 
+
+    /// <summary>
+    /// moves the bject
+    /// </summary>
     private void FixedUpdate()
     {
         transform.Translate(Vector2.right * _right * _speed / 2 * Time.fixedDeltaTime);
 
     }
 
+    /// <summary>
+    /// changes the direction on collision with a trigger with the correct name
+    /// </summary>
+    /// <param name="collision"></param>
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "LeftWall")
