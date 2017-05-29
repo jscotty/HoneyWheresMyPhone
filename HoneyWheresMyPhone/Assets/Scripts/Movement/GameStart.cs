@@ -33,7 +33,7 @@ public class GameStart : MonoBehaviour {
         _gameData.direction = Direction.NONE;
     }
 
-    void Update()
+    private void Update()
     {
         if (!_started)
         {
