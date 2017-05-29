@@ -25,6 +25,9 @@ public class GameStart : MonoBehaviour {
     private Vector2 _handStartPos;
     private float _posTimer;
 
+    /// <summary>
+    /// Sets variables
+    /// </summary>
     private void Awake()
     {
         _hand = HookCollision.handTransform.parent;
@@ -33,6 +36,11 @@ public class GameStart : MonoBehaviour {
         _gameData.direction = Direction.NONE;
     }
 
+    /// <summary>
+    /// First checks if there is input from the player, and starts the game when it's received.
+    /// Then moves the hand and the temporary backgrounds.
+    /// After the hand is in the right position it only starts moving the background.
+    /// </summary>
     private void Update()
     {
         if (!_started)
@@ -68,6 +76,15 @@ public class GameStart : MonoBehaviour {
         }
 	}
 
+    /// <summary>
+    /// Creates all the start delays that are needed.
+    /// After 2 seconds it starts the game.
+    /// After another 0.5 seconds it starts the movement of the hand.
+    /// After another 3.5 seconds it changes the foreground so if you immediately grab an item you cannot see the wrong foreground.
+    /// After the next 0.5 seconds Enables the collider of the hand
+    /// after the last 2.1 seconds it disables all the temporary items, including this script.
+    /// </summary>
+    /// <returns></returns>
     IEnumerator StartDelay()
     {
         yield return new WaitForSeconds(2);
@@ -86,6 +103,9 @@ public class GameStart : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// Starts the game and enables the objects that need to be active in the game scene
+    /// </summary>
     private void StartGame()
     {
         _gameData.direction = Direction.DOWN;

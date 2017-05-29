@@ -10,7 +10,6 @@ public class StartGameScript : MonoBehaviour {
     /// </summary>
     public void StartGame()
     {
-        //TODO check if the GameScene actually will be scene 1
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(2);
     }
 }

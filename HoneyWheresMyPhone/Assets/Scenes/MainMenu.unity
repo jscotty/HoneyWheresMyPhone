@@ -399,7 +399,7 @@ RectTransform:
   m_GameObject: {fileID: 371137879}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2020196170}
   m_RootOrder: 1
@@ -621,12 +621,12 @@ Prefab:
     - target: {fileID: 224712396757413950, guid: 7c6111daa8c038143b76ca6d0730b811,
         type: 2}
       propertyPath: m_LocalScale.x
-      value: 0.3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224712396757413950, guid: 7c6111daa8c038143b76ca6d0730b811,
         type: 2}
       propertyPath: m_LocalScale.y
-      value: 0.3
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7c6111daa8c038143b76ca6d0730b811, type: 2}
@@ -1106,7 +1106,7 @@ RectTransform:
   m_GameObject: {fileID: 1424212348}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 977375025}
   m_Father: {fileID: 1642760068}
@@ -1272,7 +1272,7 @@ RectTransform:
   m_GameObject: {fileID: 1474603584}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 839896859}
   m_Father: {fileID: 1642760068}
@@ -1632,7 +1632,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 341a8a1bdff9a9e4cbe8d8aaf02c1825, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e81dada3d12d94e40b01ac9e833dc675, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

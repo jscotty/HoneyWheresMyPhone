@@ -28,6 +28,6 @@ public class PauzeMenu : MonoBehaviour {
     /// </summary>
     public void BackToMenu()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
 }

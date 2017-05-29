@@ -18,6 +18,6 @@ public class EndScreenButtons : MonoBehaviour {
     /// </summary>
     public void MainMenu()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
 }
