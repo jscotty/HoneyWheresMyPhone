@@ -633,6 +633,18 @@ Prefab:
       propertyPath: _soundClip
       value: 
       objectReference: {fileID: 8300000, guid: d52b5fcadbea83b4ead43d3b2a98ee45, type: 3}
+    - target: {fileID: 114760256372305932, guid: 7c6111daa8c038143b76ca6d0730b811,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300052, guid: 5a9f26595f1a7d24f876a5ee611a2107,
+        type: 3}
+    - target: {fileID: 114858180925481402, guid: 7c6111daa8c038143b76ca6d0730b811,
+        type: 2}
+      propertyPath: m_SpriteState.m_PressedSprite
+      value: 
+      objectReference: {fileID: 21300050, guid: 5a9f26595f1a7d24f876a5ee611a2107,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7c6111daa8c038143b76ca6d0730b811, type: 2}
   m_IsPrefabParent: 0
@@ -673,7 +685,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &709994469
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2278,6 +2290,18 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 114205081315239512, guid: 2e79fd9239e24524eb33853260c8e444,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300016, guid: 5a9f26595f1a7d24f876a5ee611a2107,
+        type: 3}
+    - target: {fileID: 114460192623800488, guid: 2e79fd9239e24524eb33853260c8e444,
+        type: 2}
+      propertyPath: m_SpriteState.m_PressedSprite
+      value: 
+      objectReference: {fileID: 21300030, guid: 5a9f26595f1a7d24f876a5ee611a2107,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2e79fd9239e24524eb33853260c8e444, type: 2}
   m_IsPrefabParent: 0
