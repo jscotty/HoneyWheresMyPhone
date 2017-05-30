@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// This a class to quickly debug/test things
+/// </summary>
 public class NickTest : MonoBehaviour
 {
     private float speed = 1;

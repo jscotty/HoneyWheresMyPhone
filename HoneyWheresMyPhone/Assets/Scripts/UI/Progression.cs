@@ -13,6 +13,9 @@ public class Progression : MonoBehaviour {
     [SerializeField]
     private Transform _movingObject;
 
+    /// <summary>
+    /// updates the progression text
+    /// </summary>
     private void FixedUpdate()
     {
         _progressionText.text = (int)_movingObject.position.y + _textBehindDepth;

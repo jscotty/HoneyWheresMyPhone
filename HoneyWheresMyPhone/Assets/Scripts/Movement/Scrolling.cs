@@ -27,6 +27,9 @@ public class Scrolling : MonoBehaviour
 
     public float percentage { get; private set; }
     
+    /// <summary>
+    /// sets the needed references
+    /// </summary>
     private void Awake()
     {
         _gameData = GameObject.FindGameObjectWithTag("GameData").GetComponent<GameData>();

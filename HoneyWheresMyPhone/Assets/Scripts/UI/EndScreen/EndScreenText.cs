@@ -9,6 +9,9 @@ public class EndScreenText : MonoBehaviour {
     [SerializeField] private Text _depthTotal;
     [SerializeField] private Text _moneyTotal;
 
+    /// <summary>
+    /// shows the scores of this round
+    /// </summary>
 	void Start () {
         _depthTotal.text = ScoreManager.Instance.depthCurrentRound.ToString("#.00") + "m";
         _moneyTotal.text = (ScoreManager.Instance.scoreCurrentRound * PlayerPrefs.GetInt("ItemValue")).ToString();

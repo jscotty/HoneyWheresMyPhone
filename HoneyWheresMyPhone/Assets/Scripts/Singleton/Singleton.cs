@@ -9,6 +9,9 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
 
     private static object _lock = new object();
 
+    /// <summary>
+    /// finds the singleton or creates a singleton if it's not there
+    /// </summary>
     public static T Instance
     {
         get

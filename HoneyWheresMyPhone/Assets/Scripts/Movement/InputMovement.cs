@@ -9,6 +9,9 @@ public class InputMovement : MonoBehaviour
 
     private GameData _gameData;
 
+    /// <summary>
+    /// sets the needed references
+    /// </summary>
     private void Awake()
     {
         GameObject tGameobject = GameObject.FindGameObjectWithTag("GameData");

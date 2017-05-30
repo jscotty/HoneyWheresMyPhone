@@ -9,12 +9,18 @@ public class Rotation : MonoBehaviour {
     private GameData _gameData;
     private Transform _hand;
 
+    /// <summary>
+    /// sets the needed references
+    /// </summary>
     private void Start()
     {
         _gameData = GameObject.FindGameObjectWithTag("GameData").GetComponent<GameData>();
         _hand = HookCollision.handTransform;
     }
 
+    /// <summary>
+    /// rotates the items over time
+    /// </summary>
     private void FixedUpdate()
     {
         if (_hand.position.x < transform.position.x)

@@ -8,6 +8,9 @@ public class ScoreManager : Singleton<ScoreManager> {
     public float depthCurrentRound = 0;
     public int gainedEndObject = 0;
 
+    /// <summary>
+    /// Resets the current values for a new round
+    /// </summary>
     public void ResetScore()
     {
         if(depthCurrentRound > PlayerPrefs.GetFloat("HighScore")) {

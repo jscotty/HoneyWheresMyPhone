@@ -3,6 +3,9 @@ using UnityEditor;
 using UnityEngine;
 	
 public class uGUITools : MonoBehaviour {
+    /// <summary>
+    /// sets the anchors to the corners of the objects
+    /// </summary>
 	[MenuItem("uGUI/Anchors to Corners %[")]
 	static void AnchorsToCorners(){
 		foreach(Transform transform in Selection.transforms){
@@ -22,6 +25,9 @@ public class uGUITools : MonoBehaviour {
 		}
 	}
 
+    /// <summary>
+    /// sets the corners to the anchors
+    /// </summary>
 	[MenuItem("uGUI/Corners to Anchors %]")]
 	static void CornersToAnchors(){
 		foreach(Transform transform in Selection.transforms){
@@ -33,16 +39,25 @@ public class uGUITools : MonoBehaviour {
 		}
 	}
 
+    /// <summary>
+    /// Mirror Horizontally Around Anchors
+    /// </summary>
 	[MenuItem("uGUI/Mirror Horizontally Around Anchors %;")]
 	static void MirrorHorizontallyAnchors(){
 		MirrorHorizontally(false);
 	}
 
+    /// <summary>
+    /// Mirror Horizontally Around Parent Center
+    /// </summary>
 	[MenuItem("uGUI/Mirror Horizontally Around Parent Center %:")]
 	static void MirrorHorizontallyParent(){
 		MirrorHorizontally(true);
 	}
 
+    /// <summary>
+    /// Mirror Horizontally
+    /// </summary>
 	static void MirrorHorizontally(bool mirrorAnchors){
 		foreach(Transform transform in Selection.transforms){
 			RectTransform t = transform as RectTransform;
@@ -64,17 +79,26 @@ public class uGUITools : MonoBehaviour {
 		}
 	}
 
+    /// <summary>
+    /// Mirror Vertically Around Anchors
+    /// </summary>
 	[MenuItem("uGUI/Mirror Vertically Around Anchors %'")]
 	static void MirrorVerticallyAnchors(){
 		MirrorVertically(false);
 	}
-	
-	[MenuItem("uGUI/Mirror Vertically Around Parent Center %\"")]
+
+    /// <summary>
+    /// Mirror Vertically Around Parent Center
+    /// </summary>
+    [MenuItem("uGUI/Mirror Vertically Around Parent Center %\"")]
 	static void MirrorVerticallyParent(){
 		MirrorVertically(true);
 	}
-	
-	static void MirrorVertically(bool mirrorAnchors){
+
+    /// <summary>
+    /// Mirror Vertically
+    /// </summary>
+    static void MirrorVertically(bool mirrorAnchors){
 		foreach(Transform transform in Selection.transforms){
 			RectTransform t = transform as RectTransform;
 			RectTransform pt = Selection.activeTransform.parent as RectTransform;

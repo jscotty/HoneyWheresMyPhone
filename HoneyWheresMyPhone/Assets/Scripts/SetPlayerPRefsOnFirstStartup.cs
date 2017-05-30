@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class SetPlayerPRefsOnFirstStartup : MonoBehaviour {
 
+    /// <summary>
+    /// sets the basic values in the playerprefs if it's the first startup
+    /// </summary>
     private void Awake()
     {
         if (PlayerPrefs.GetInt("FirstStartup") == 0)

@@ -7,7 +7,6 @@ public class HookCollision : MonoBehaviour
 
     [SerializeField] private string _itemTag;
     [SerializeField] private Vector2 _desiredItemPosition;
-    //private List<ItemBase> _itemScores = new List<ItemBase>();
     [SerializeField] private Scrolling _scrolling;
     [SerializeField] private BackgroundScroll _backgroundScroll;
     [SerializeField] private AudioClip _collectSound;
@@ -26,9 +25,6 @@ public class HookCollision : MonoBehaviour
         _gameData = tGameobject.GetComponent<GameData>();
         tGameobject = GameObject.FindGameObjectWithTag("ItemSpawner");
         _itemSpawner = tGameobject.GetComponent<ItemSpawer>();
-#if UNITY_EDITOR
-        //Debug.Log("gamedata? " + _gameData);
-#endif
     }
 
     /// <summary>
@@ -49,7 +45,6 @@ public class HookCollision : MonoBehaviour
             collision.gameObject.GetComponent<Collider2D>().enabled = false;
             collision.gameObject.transform.SetParent(null);
             collision.gameObject.AddComponent<MoveOutOfScreen>();
-            //_itemScores.Add(collision.gameObject.GetComponent<ItemBase>());
             ItemBase tItemScores = collision.gameObject.GetComponent<ItemBase>();
             ScoreManager.Instance.scoreCurrentRound += tItemScores.Score();
             if (tItemScores.EndObject())
