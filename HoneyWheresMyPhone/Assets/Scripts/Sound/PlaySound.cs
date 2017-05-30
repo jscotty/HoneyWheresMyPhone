@@ -17,12 +17,20 @@ public class PlaySound : MonoBehaviour
     private bool _dontDestroyOnLoad;
     [SerializeField]
     private bool _checkIfPlaying;
+    [SerializeField]
+    private bool _replaceOther;
+    [SerializeField]
+    private string _replacable;
 
     /// <summary>
     /// starts the background music
     /// </summary>
     private void Start()
     {
+        if(_replaceOther && SoundController.Instance.IsPlaying(_replacable))
+        {
+            SoundController.Instance.DestroyAudioSource(_replacable);
+        }
         if (!_checkIfPlaying || !SoundController.Instance.IsPlaying(_stringForSound))
         {
             SoundController.Instance.PlaySound(_soundClip, _volume, null, _repeat, _stringForSound, _dontDestroyOnLoad);
