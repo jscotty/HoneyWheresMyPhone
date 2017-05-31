@@ -1,6 +1,4 @@
-﻿//@author Nick van Dokkum
-
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
