@@ -6,7 +6,6 @@ public class HookCollision : MonoBehaviour
 {
 
     [SerializeField] private string _itemTag;
-    [SerializeField] private Vector2 _desiredItemPosition;
     [SerializeField] private Scrolling _scrolling;
     [SerializeField] private BackgroundScroll _backgroundScroll;
     [SerializeField] private AudioClip _collectSound;

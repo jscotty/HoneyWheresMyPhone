@@ -21,6 +21,9 @@ public class MuteButton : MonoBehaviour {
     [SerializeField]
     private AudioClip _soundClip;
 
+    [SerializeField]
+    private bool _inGame;
+
     /// <summary>
     /// gets the needed references and checks if it should show the enabled sprites or the disabled sprites
     /// </summary>
@@ -33,7 +36,9 @@ public class MuteButton : MonoBehaviour {
             _soundController = SoundController.Instance;
         }
         sprStateMuted.pressedSprite = _clickedDisabled;
+        sprStateMuted.highlightedSprite = _clickedDisabled;
         sprStateNotMuted.pressedSprite = _clickedEnabled;
+        sprStateNotMuted.highlightedSprite = _clickedEnabled;
         UpdateVisual();
        
     }
@@ -72,14 +77,25 @@ public class MuteButton : MonoBehaviour {
     {
         if (_soundController.MayIPlaySound)
         {
-            if (!_soundController.IsPlaying("BGMusic"))
+            if (_inGame && !_soundController.IsPlaying("BGMusic"))
             {
                 _soundController.PlaySound(_soundClip,0.7f,null,true, "BGMusic",true);
+            }
+            else if (!_inGame && !_soundController.IsPlaying("BGMusicMenu"))
+            {
+                _soundController.PlaySound(_soundClip, 0.7f, null, true, "BGMusicMenu", true);
             }
         }
         else
         {
-            _soundController.DestroyAudioSource("BGMusic");
+            if (_inGame)
+            {
+                _soundController.DestroyAudioSource("BGMusic");
+            }
+            else
+            {
+                _soundController.DestroyAudioSource("BGMusicMenu");
+            }
         }
     }
 }

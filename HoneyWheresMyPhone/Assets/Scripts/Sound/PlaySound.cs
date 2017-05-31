@@ -27,12 +27,15 @@ public class PlaySound : MonoBehaviour
     /// </summary>
     private void Start()
     {
+        Debug.Log(gameObject.name);
         if(_replaceOther && SoundController.Instance.IsPlaying(_replacable))
         {
+            Debug.Log(_replacable + " " + SoundController.Instance.IsPlaying(_replacable));
             SoundController.Instance.DestroyAudioSource(_replacable);
         }
         if (!_checkIfPlaying || !SoundController.Instance.IsPlaying(_stringForSound))
         {
+            Debug.Log(_soundClip.name + " " + _stringForSound);
             SoundController.Instance.PlaySound(_soundClip, _volume, null, _repeat, _stringForSound, _dontDestroyOnLoad);
         }
     }

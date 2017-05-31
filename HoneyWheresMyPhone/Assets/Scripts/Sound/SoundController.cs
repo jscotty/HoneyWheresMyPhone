@@ -107,25 +107,22 @@ public class SoundController : Singleton<SoundController>
     /// <param name="iSoundToDestroy">The AudioSource that you want to be destroyed</param>
     public void DestroyAudioSource(string iSoundToDestroy)
     {
-        if (!_mayIPlaySound)
+        bool tSoundDestroyed = false;
+        for (int i = 0; i < _currentSounds.Count; i++)
         {
-            bool tSoundDestroyed = false;
-            for (int i = 0; i < _currentSounds.Count; i++)
+            if (_currentSounds[i] == iSoundToDestroy)
             {
-                if (_currentSounds[i] == iSoundToDestroy)
-                {
-                    tSoundDestroyed = true;
-                    AudioSource tAudioSource = _currentAudioSources[i];
-                    _currentAudioSources[i].Stop();
-                    _currentSounds.RemoveAt(i);
-                    _currentAudioSources.RemoveAt(i);
-                    Destroy(tAudioSource.gameObject);
-                }
+                tSoundDestroyed = true;
+                AudioSource tAudioSource = _currentAudioSources[i];
+                _currentAudioSources[i].Stop();
+                _currentSounds.RemoveAt(i);
+                _currentAudioSources.RemoveAt(i);
+                Destroy(tAudioSource.gameObject);
             }
-            if (!tSoundDestroyed)
-            {
-                Debug.LogError("The sound '" + iSoundToDestroy + "' is not found");
-            }
+        }
+        if (!tSoundDestroyed)
+        {
+            Debug.LogError("The sound '" + iSoundToDestroy + "' is not found");
         }
     }
 
